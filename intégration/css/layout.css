@@ -98,6 +98,32 @@
 
 
 /* --------------------------------------------------------------------------
+   Liste de logements (accueil, favoris)
+   -------------------------------------------------------------------------- */
+
+.listings {
+  margin-top: 2.5rem; /* 40px */
+}
+
+.listings__grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .listings__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .listings__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
    Header
    -------------------------------------------------------------------------- */
 

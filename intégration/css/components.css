@@ -288,7 +288,7 @@
 
 /* --------------------------------------------------------------------------
    Bouton favori (sur les cartes et la page logement)
-   <button class="favorite-button" aria-pressed="false" aria-label="Ajouter aux favoris">
+   <button class="favorite-button" aria-pressed="false" aria-label="Favori : Appartement cosy">
      <span class="icon icon--heart-filled" aria-hidden="true"></span>
    </button>
    -------------------------------------------------------------------------- */
@@ -304,12 +304,21 @@
   background-color: var(--color-surface);
   border: none;
   border-radius: var(--radius-md);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.favorite-button:hover,
-.favorite-button[aria-pressed="true"] {
+.favorite-button:hover {
   color: var(--color-primary);
+}
+
+/* Logement en favori : fond rouge, cœur blanc */
+.favorite-button[aria-pressed="true"] {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.favorite-button[aria-pressed="true"]:hover {
+  background-color: var(--color-primary-hover);
 }
 
 
