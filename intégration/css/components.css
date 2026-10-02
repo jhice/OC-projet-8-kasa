@@ -1,0 +1,366 @@
+/* ==========================================================================
+   Composants — d'après la planche « Composants » de la maquette Figma
+   Nommage BEM : .bloc, .bloc__element, .bloc--modificateur
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Icône
+   Les SVG servent de masque : l'icône prend la couleur du texte (currentColor)
+   <span class="icon icon--heart" aria-hidden="true"></span>
+   -------------------------------------------------------------------------- */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-url) center / contain no-repeat;
+  mask: var(--icon-url) center / contain no-repeat;
+}
+
+.icon--back { --icon-url: url("../assets/icons/back.svg"); }
+.icon--close { --icon-url: url("../assets/icons/close.svg"); }
+.icon--delete { --icon-url: url("../assets/icons/delete.svg"); }
+.icon--heart { --icon-url: url("../assets/icons/heart.svg"); }
+.icon--heart-filled { --icon-url: url("../assets/icons/heart-filled.svg"); }
+.icon--location { --icon-url: url("../assets/icons/location.svg"); }
+.icon--menu { --icon-url: url("../assets/icons/menu.svg"); }
+.icon--message { --icon-url: url("../assets/icons/message.svg"); }
+.icon--plus { --icon-url: url("../assets/icons/plus.svg"); }
+.icon--send { --icon-url: url("../assets/icons/send.svg"); }
+
+.icon--lg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon--xl {
+  width: 2rem;
+  height: 2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Bouton
+   <button class="button">label</button>
+   <button class="button button--secondary">…</button>
+   <button class="button button--icon" aria-label="…"><span class="icon …"></span></button>
+   -------------------------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--button-height);
+  padding: 0 var(--space-6);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+  text-align: center;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.button:hover,
+.button--active {
+  background-color: var(--color-primary-hover);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button--secondary {
+  color: var(--color-text-muted);
+  background-color: var(--color-grey-light);
+}
+
+.button--secondary:hover,
+.button--secondary.button--active {
+  color: var(--color-text);
+  background-color: #ebebeb;
+}
+
+/* Bouton avec icône et texte : padding réduit */
+.button--with-icon {
+  padding: 0 var(--space-4);
+}
+
+/* Bouton carré, icône seule */
+.button--icon {
+  width: var(--icon-button-size);
+  min-height: var(--icon-button-size);
+  height: var(--icon-button-size);
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+/* Bouton sans fond (ex. suppression d'un champ) */
+.button--ghost {
+  color: var(--color-primary);
+  background-color: transparent;
+}
+
+.button--ghost:hover {
+  color: var(--color-primary-hover);
+  background-color: var(--color-grey-light);
+}
+
+.button--block {
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   Lien de navigation
+   <a class="nav-link nav-link--active" aria-current="page">Accueil</a>
+   -------------------------------------------------------------------------- */
+
+.nav-link {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link--active {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   Champ de formulaire
+   <div class="field">
+     <label class="field__label" for="x">Label</label>
+     <input class="field__input" id="x" placeholder="Aide contextuelle">
+   </div>
+   -------------------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field__label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.field__input {
+  width: 100%;
+  min-height: var(--control-height);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.field__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.field__input:hover {
+  border-color: #dcdcdc;
+}
+
+.field__input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.field__input--textarea {
+  min-height: 7.5rem; /* 120px */
+  resize: vertical;
+}
+
+/* Champ suivi d'une action (bouton + ou ×) */
+.field__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.field__row .button--icon {
+  width: var(--button-height);
+  height: var(--button-height);
+}
+
+
+/* --------------------------------------------------------------------------
+   Case à cocher
+   <label class="checkbox">
+     <input class="checkbox__input" type="checkbox"> <span>Label</span>
+   </label>
+   -------------------------------------------------------------------------- */
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.checkbox__input {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-grey-dark);
+  border-radius: 2px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.checkbox__input:checked {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+
+/* --------------------------------------------------------------------------
+   Tag (équipement, mot-clé)
+   <span class="tag">équipement</span>
+   <span class="tag">équipement <button class="tag__remove" aria-label="Retirer">…</button></span>
+   -------------------------------------------------------------------------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--icon-button-size);
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background-color: var(--color-grey-light);
+  border-radius: var(--radius-md);
+}
+
+.tag__remove {
+  display: inline-flex;
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  border: none;
+}
+
+.tag__remove:hover {
+  color: var(--color-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   Bouton favori (sur les cartes et la page logement)
+   <button class="favorite-button" aria-pressed="false" aria-label="Ajouter aux favoris">
+     <span class="icon icon--heart-filled" aria-hidden="true"></span>
+   </button>
+   -------------------------------------------------------------------------- */
+
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  padding: 0;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: none;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast);
+}
+
+.favorite-button:hover,
+.favorite-button[aria-pressed="true"] {
+  color: var(--color-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   Carte logement
+   La grille qui place les cartes relève de chaque page.
+   -------------------------------------------------------------------------- */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.card__media {
+  position: relative;
+  aspect-ratio: 356 / 375;
+  background-color: var(--color-grey-light);
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__favorite {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 1;
+}
+
+.card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 11rem; /* 176px : aligne les prix d'une rangée à l'autre */
+  padding: var(--space-5);
+}
+
+.card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+
+/* Toute la carte est cliquable via le lien du titre */
+.card__link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.card__location {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+.card__price {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+.card__price-amount {
+  margin-right: var(--space-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}

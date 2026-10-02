@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasa — Composants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Styles propres à cette page de démonstration uniquement */
+    .styleguide { max-width: 1115px; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+    .styleguide__title { margin-bottom: var(--space-6); font-size: var(--font-size-xxl); color: var(--color-primary); }
+    .styleguide__section { margin-bottom: var(--space-7); }
+    .styleguide__heading { margin-bottom: var(--space-4); padding-bottom: var(--space-2); font-size: var(--font-size-lg); border-bottom: 1px solid #e5e5e5; }
+    .styleguide__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); }
+    .styleguide__panel { display: grid; gap: var(--space-5); max-width: 240px; padding: var(--space-4); background: var(--color-surface); border-radius: var(--radius-lg); }
+    .styleguide__swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: var(--space-4); }
+    .styleguide__swatch { display: grid; gap: var(--space-2); font-size: var(--font-size-sm); text-align: center; }
+    .styleguide__swatch::before { content: ""; aspect-ratio: 1; background: var(--swatch); border: 1px solid #e5e5e5; border-radius: var(--radius-lg); }
+    .styleguide__icons { color: var(--color-text); }
+    .styleguide__cards { display: grid; gap: var(--space-5); }
+    @media (min-width: 768px) {
+      .styleguide__cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .styleguide__cards { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <main class="styleguide">
+    <h1 class="styleguide__title">Composants</h1>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Logo</h2>
+      <div class="styleguide__row">
+        <img src="assets/logo/logo-kasa.svg" alt="Kasa" width="163" height="58">
+        <img src="assets/logo/logo-kasa-picto.svg" alt="Kasa" width="47" height="54">
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Palette</h2>
+      <div class="styleguide__swatches">
+        <span class="styleguide__swatch" style="--swatch: var(--color-main-red)">Main red<br>#99331A</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-dark-orange)">Dark orange<br>#842C16</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-light-orange)">Light orange<br>#FFFBF9</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-black)">Noir<br>#0D0D0D</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-white)">Blanc<br>#FFFFFF</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-grey-light)">Gris light<br>#F5F5F5</span>
+        <span class="styleguide__swatch" style="--swatch: var(--color-grey-dark)">Gris dark<br>#565656</span>
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Boutons</h2>
+      <div class="styleguide__row">
+        <button class="button" type="button">label</button>
+        <button class="button button--active" type="button">label</button>
+        <button class="button button--secondary" type="button">label</button>
+        <button class="button" type="button" disabled>désactivé</button>
+      </div>
+      <div class="styleguide__row">
+        <button class="button button--with-icon" type="button">
+          <span class="icon icon--message" aria-hidden="true"></span>label
+        </button>
+        <button class="button button--with-icon button--active" type="button">
+          <span class="icon icon--message" aria-hidden="true"></span>label
+        </button>
+        <button class="button button--with-icon button--secondary" type="button">
+          <span class="icon icon--message" aria-hidden="true"></span>label
+        </button>
+      </div>
+      <div class="styleguide__row">
+        <button class="button button--icon" type="button" aria-label="Message">
+          <span class="icon icon--message" aria-hidden="true"></span>
+        </button>
+        <button class="button button--icon button--active" type="button" aria-label="Message">
+          <span class="icon icon--message" aria-hidden="true"></span>
+        </button>
+        <button class="button button--icon button--secondary" type="button" aria-label="Message">
+          <span class="icon icon--message" aria-hidden="true"></span>
+        </button>
+        <button class="button button--icon button--ghost" type="button" aria-label="Supprimer">
+          <span class="icon icon--close" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Icônes</h2>
+      <div class="styleguide__row styleguide__icons">
+        <span class="icon icon--message" title="message"></span>
+        <span class="icon icon--heart" title="heart"></span>
+        <span class="icon icon--heart-filled" title="heart-filled"></span>
+        <span class="icon icon--close" title="close"></span>
+        <span class="icon icon--back" title="back"></span>
+        <span class="icon icon--location" title="location"></span>
+        <span class="icon icon--delete" title="delete"></span>
+        <span class="icon icon--plus" title="plus"></span>
+        <span class="icon icon--menu" title="menu"></span>
+        <span class="icon icon--send" title="send"></span>
+      </div>
+      <div class="styleguide__row" style="color: var(--color-primary)">
+        <span class="icon icon--heart icon--lg"></span>
+        <span class="icon icon--message icon--lg"></span>
+        <span class="icon icon--menu icon--xl"></span>
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Navigation</h2>
+      <div class="styleguide__row">
+        <a class="nav-link" href="#">Accueil</a>
+        <a class="nav-link nav-link--active" href="#" aria-current="page">Accueil</a>
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Formulaires</h2>
+      <form class="styleguide__panel" action="#">
+        <div class="field">
+          <label class="field__label" for="demo-input">Label</label>
+          <input class="field__input" id="demo-input" type="text" placeholder="Aide contextuelle">
+        </div>
+        <div class="field">
+          <label class="field__label" for="demo-textarea">Label</label>
+          <textarea class="field__input field__input--textarea" id="demo-textarea" placeholder="Aide contextuelle"></textarea>
+        </div>
+        <div class="field">
+          <label class="field__label" for="demo-add">Label</label>
+          <div class="field__row">
+            <input class="field__input" id="demo-add" type="text" placeholder="Aide contextuelle">
+            <button class="button button--icon" type="button" aria-label="Ajouter">
+              <span class="icon icon--plus" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="demo-remove">Label</label>
+          <div class="field__row">
+            <input class="field__input" id="demo-remove" type="text" placeholder="Aide contextuelle">
+            <button class="button button--icon button--ghost" type="button" aria-label="Supprimer">
+              <span class="icon icon--close" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <label class="checkbox">
+          <input class="checkbox__input" type="checkbox"> <span>Label</span>
+        </label>
+        <label class="checkbox">
+          <input class="checkbox__input" type="checkbox" checked> <span>Label</span>
+        </label>
+      </form>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Tags</h2>
+      <div class="styleguide__row">
+        <span class="tag">équipement</span>
+        <span class="tag">
+          équipement
+          <button class="tag__remove" type="button" aria-label="Retirer équipement">
+            <span class="icon icon--close" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div>
+    </section>
+
+    <section class="styleguide__section">
+      <h2 class="styleguide__heading">Cartes logement</h2>
+      <ul class="styleguide__cards" role="list">
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="#">Appartement cosy</a></h3>
+              <p class="card__location">Ile de France - Paris 17e</p>
+              <p class="card__price"><span class="card__price-amount">100€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-1-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="true" aria-label="Retirer des favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="#">Magnifique appartement proche Canal Saint Martin</a></h3>
+              <p class="card__location">Ile de France - Paris 10e</p>
+              <p class="card__price"><span class="card__price-amount">110€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-2-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="#">Studio de charme - Buttes Chaumont</a></h3>
+              <p class="card__location">Ile de France - Paris 20e</p>
+              <p class="card__price"><span class="card__price-amount">120€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
