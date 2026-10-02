@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasa — Appartement cosy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/property.css">
+</head>
+<body class="page">
+  <header class="header">
+    <div class="header__inner">
+      <nav class="header__nav" aria-label="Navigation principale">
+        <ul class="header__nav-list" role="list">
+          <li><a class="nav-link" href="index.html">Accueil</a></li>
+          <li><a class="nav-link" href="a-propos.html">À propos</a></li>
+        </ul>
+      </nav>
+
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        <img class="header__logo-full" src="assets/logo/logo-kasa.svg" alt="Kasa — accueil" width="163" height="58">
+      </a>
+
+      <div class="header__actions">
+        <a class="header__add-link" href="ajout-logement.html">+Ajouter un logement</a>
+        <div class="header__icons">
+          <a class="header__icon-link" href="favoris.html">
+            <span class="icon icon--heart" aria-hidden="true"></span>
+            <span class="visually-hidden">Favoris</span>
+          </a>
+          <span class="header__separator" aria-hidden="true"></span>
+          <a class="header__icon-link" href="messagerie.html">
+            <span class="icon icon--message" aria-hidden="true"></span>
+            <span class="visually-hidden">Messagerie</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="header__burger" type="button" popovertarget="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="icon icon--menu icon--xl" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" popover>
+      <div class="mobile-menu__head">
+        <a href="index.html">
+          <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        </a>
+        <button class="mobile-menu__close" type="button" popovertarget="mobile-menu" popovertargetaction="hide" aria-label="Fermer le menu">
+          <span class="icon icon--close icon--xl" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav class="mobile-menu__body" aria-label="Navigation mobile">
+        <ul role="list">
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="index.html">Accueil</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="a-propos.html">À propos</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="messagerie.html">Messagerie</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="favoris.html">Favoris</a></li>
+        </ul>
+        <a class="button mobile-menu__cta" href="ajout-logement.html">Ajouter un logement</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Gabarit statique : logement c67ab8a7 (données en dur, rendu dynamique avec Next) -->
+  <main class="page__main container property" data-property-id="c67ab8a7">
+    <div class="property__back">
+      <a class="button button--secondary button--with-icon" href="index.html">
+        <span class="icon icon--back" aria-hidden="true"></span>Retour aux annonces
+      </a>
+    </div>
+
+    <div class="property__layout">
+      <div class="property__main">
+        <div class="gallery">
+          <img class="gallery__main" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg" alt="Appartement cosy — photo principale">
+          <ul class="gallery__thumbs" role="list">
+            <li class="gallery__thumb"><img class="gallery__thumb-image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-2.jpg" alt="" loading="lazy"></li>
+            <li class="gallery__thumb"><img class="gallery__thumb-image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-3.jpg" alt="" loading="lazy"></li>
+            <li class="gallery__thumb"><img class="gallery__thumb-image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-4.jpg" alt="" loading="lazy"></li>
+            <li class="gallery__thumb"><img class="gallery__thumb-image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg" alt="" loading="lazy"></li>
+          </ul>
+        </div>
+
+        <article class="property-info">
+          <h1 class="property-info__title">Appartement cosy</h1>
+          <p class="property-info__location">
+            <span class="icon icon--location" aria-hidden="true"></span>Ile de France - Paris 17e
+          </p>
+          <p class="property-info__description">Votre maison loin de chez vous. Que vous veniez de l&#x27;autre bout du monde, ou juste de quelques stations de RER, vous vous sentirez chez vous dans notre appartement.</p>
+
+          <section class="property-info__section" aria-labelledby="equipments-title">
+            <h2 class="property-info__heading" id="equipments-title">Équipements</h2>
+            <ul class="property-info__tags" role="list">
+            <li class="tag property-info__tag">Équipements de base</li>
+            <li class="tag property-info__tag">Micro-Ondes</li>
+            <li class="tag property-info__tag">Douche italienne</li>
+            <li class="tag property-info__tag">Frigo</li>
+            <li class="tag property-info__tag">WIFI</li>
+            </ul>
+          </section>
+
+          <section class="property-info__section" aria-labelledby="tags-title">
+            <h2 class="property-info__heading" id="tags-title">Catégorie</h2>
+            <ul class="property-info__tags" role="list">
+            <li class="tag property-info__tag">Batignolle</li>
+            <li class="tag property-info__tag">Montmartre</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <aside class="host-card" aria-labelledby="host-title">
+        <h2 class="host-card__title" id="host-title">Votre hôte</h2>
+        <div class="host-card__profile">
+          <img class="host-card__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-12.jpg" alt="" width="81" height="81">
+          <p class="host-card__name">Nathalie Jean</p>
+          <p class="rating">
+            <span class="icon icon--star rating__star" aria-hidden="true"></span>
+            <span class="visually-hidden">Note :</span> 5<span class="visually-hidden"> sur 5</span>
+          </p>
+        </div>
+        <div class="host-card__actions">
+          <button class="button button--block" type="button">Contacter l’hôte</button>
+          <a class="button button--block" href="messagerie.html">Envoyer un message</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <img class="footer__logo" src="assets/logo/logo-kasa-picto.svg" alt="" width="47" height="54">
+    <p class="footer__copyright">© 2025 Kasa. All rights reserved</p>
+  </footer>
+</body>
+</html>

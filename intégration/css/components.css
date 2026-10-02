@@ -30,6 +30,7 @@
 .icon--message { --icon-url: url("../assets/icons/message.svg"); }
 .icon--plus { --icon-url: url("../assets/icons/plus.svg"); }
 .icon--send { --icon-url: url("../assets/icons/send.svg"); }
+.icon--star { --icon-url: url("../assets/icons/star.svg"); }
 
 .icon--lg {
   width: 1.5rem;
