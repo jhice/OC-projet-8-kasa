@@ -53,6 +53,7 @@
   --radius-sm: 4px;
   --radius-md: 5px;
   --radius-lg: 10px;
+  --radius-xl: 20px;
 
   /* Tailles récurrentes */
   --control-height: 2.5rem;    /* 40px — champs */

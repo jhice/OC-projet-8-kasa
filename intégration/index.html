@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasa — Chez vous, partout et ailleurs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="page">
+  <header class="header">
+    <div class="header__inner">
+      <nav class="header__nav" aria-label="Navigation principale">
+        <ul class="header__nav-list" role="list">
+          <li><a class="nav-link nav-link--active" href="index.html" aria-current="page">Accueil</a></li>
+          <li><a class="nav-link" href="a-propos.html">À propos</a></li>
+        </ul>
+      </nav>
+
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        <img class="header__logo-full" src="assets/logo/logo-kasa.svg" alt="Kasa — accueil" width="163" height="58">
+      </a>
+
+      <div class="header__actions">
+        <a class="header__add-link" href="ajout-logement.html">+Ajouter un logement</a>
+        <div class="header__icons">
+          <a class="header__icon-link" href="favoris.html">
+            <span class="icon icon--heart" aria-hidden="true"></span>
+            <span class="visually-hidden">Favoris</span>
+          </a>
+          <span class="header__separator" aria-hidden="true"></span>
+          <a class="header__icon-link" href="messagerie.html">
+            <span class="icon icon--message" aria-hidden="true"></span>
+            <span class="visually-hidden">Messagerie</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="header__burger" type="button" popovertarget="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="icon icon--menu icon--xl" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" popover>
+      <div class="mobile-menu__head">
+        <a href="index.html">
+          <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        </a>
+        <button class="mobile-menu__close" type="button" popovertarget="mobile-menu" popovertargetaction="hide" aria-label="Fermer le menu">
+          <span class="icon icon--close icon--xl" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav class="mobile-menu__body" aria-label="Navigation mobile">
+        <ul role="list">
+          <li class="mobile-menu__item"><a class="nav-link nav-link--active mobile-menu__link" href="index.html" aria-current="page">Accueil</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="a-propos.html">À propos</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="messagerie.html">Messagerie</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="favoris.html">Favoris</a></li>
+        </ul>
+        <a class="button mobile-menu__cta" href="ajout-logement.html">Ajouter un logement</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page__main container">
+    <section class="hero">
+      <h1 class="hero__title">Chez vous, <span class="hero__title-line">partout et ailleurs</span></h1>
+      <p class="hero__text">Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.</p>
+      <div class="hero__media">
+        <img class="hero__image" src="assets/images/hero.jpg" alt="" width="1116" height="458">
+      </div>
+    </section>
+
+    <section class="listings" aria-labelledby="listings-title">
+      <h2 class="visually-hidden" id="listings-title">Nos logements</h2>
+      <ul class="listings__grid" role="list">
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Appartement cosy aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=c67ab8a7">Appartement cosy</a></h3>
+              <p class="card__location">Ile de France - Paris 17e</p>
+              <p class="card__price"><span class="card__price-amount">100€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-1-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Magnifique appartement proche Canal Saint Martin aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=b9123946">Magnifique appartement proche Canal Saint Martin</a></h3>
+              <p class="card__location">Ile de France - Paris 10e</p>
+              <p class="card__price"><span class="card__price-amount">110€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-2-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Studio de charme - Buttes Chaumont aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=46d188c5">Studio de charme - Buttes Chaumont</a></h3>
+              <p class="card__location">Ile de France - Paris 20e</p>
+              <p class="card__price"><span class="card__price-amount">120€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-3-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Nid douillet au coeur du 11ème aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=7af00cd6">Nid douillet au coeur du 11ème</a></h3>
+              <p class="card__location">Ile de France - Paris 11e</p>
+              <p class="card__price"><span class="card__price-amount">130€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-4-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Appartement de Standing - 10e aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=0979876d">Appartement de Standing - 10e</a></h3>
+              <p class="card__location">Ile de France - Paris 10e</p>
+              <p class="card__price"><span class="card__price-amount">140€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-5-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Studio d&#x27;artiste aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=f72a452f">Studio d&#x27;artiste</a></h3>
+              <p class="card__location">Ile de France - Paris 18e</p>
+              <p class="card__price"><span class="card__price-amount">150€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-6-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Cheap - Studio 18ème aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=b4c67936">Cheap - Studio 18ème</a></h3>
+              <p class="card__location">Ile de France - Paris 18e</p>
+              <p class="card__price"><span class="card__price-amount">100€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-7-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Superbe appartement proche Tour Eiffel aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=bc6f7112">Superbe appartement proche Tour Eiffel</a></h3>
+              <p class="card__location">Ile de France - Paris 6e</p>
+              <p class="card__price"><span class="card__price-amount">110€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-8-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Suite familiale aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=cb2f9222">Suite familiale</a></h3>
+              <p class="card__location">Ile de France - Paris 14e</p>
+              <p class="card__price"><span class="card__price-amount">120€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-9-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Appartement moderne sur parc aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=d60ca600">Appartement moderne sur parc</a></h3>
+              <p class="card__location">Ile de France - Paris 11e</p>
+              <p class="card__price"><span class="card__price-amount">130€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-10-1.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Charmant Studio Marais aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=2cf259e1">Charmant Studio Marais</a></h3>
+              <p class="card__location">Ile de France - Paris 11e</p>
+              <p class="card__price"><span class="card__price-amount">140€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="card">
+            <div class="card__media">
+              <img class="card__image" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-11-3.jpg" alt="" loading="lazy">
+              <button class="favorite-button card__favorite" type="button" aria-pressed="false" aria-label="Ajouter Studio fonctionnel République aux favoris">
+                <span class="icon icon--heart-filled" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a class="card__link" href="logement.html?id=5323c29b">Studio fonctionnel République</a></h3>
+              <p class="card__location">Ile de France - Paris 3e</p>
+              <p class="card__price"><span class="card__price-amount">150€</span>par nuit</p>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="how-it-works-title">
+      <h2 class="how-it-works__title" id="how-it-works-title">Comment ça marche ?</h2>
+      <p class="how-it-works__text">Que vous partiez pour un week-end improvisé, des vacances en famille ou un voyage professionnel, Kasa vous aide à trouver un lieu qui vous ressemble.</p>
+      <ol class="how-it-works__steps" role="list">
+        <li class="step">
+          <h3 class="step__title">Recherchez</h3>
+          <p class="step__text">Entrez votre destination, vos dates et laissez Kasa faire le reste</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">Réservez</h3>
+          <p class="step__text">Profitez d’une plateforme sécurisée et de profils d’hôtes vérifiés.</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">Vivez l’expérience</h3>
+          <p class="step__text">Installez-vous, profitez de votre séjour, et sentez-vous chez vous, partout.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img class="footer__logo" src="assets/logo/logo-kasa-picto.svg" alt="" width="47" height="54">
+    <p class="footer__copyright">© 2025 Kasa. All rights reserved</p>
+  </footer>
+</body>
+</html>
