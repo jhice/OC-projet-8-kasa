@@ -1,10 +1,11 @@
 // import styles from "./page.module.css";
 
+import { notFound } from "next/navigation";
 import PropertyCard from "./ui/property-card";
+import { apiListProperties } from "./lib/api-bridge";
 
 export default async function Home() {
-  const data = await fetch('http://localhost:8000/api/properties')
-  const properties = await data.json();
+  const properties = await apiListProperties();
   console.log(properties);
   const propertiesForHomepage = properties.splice(0, 9);
   return (
