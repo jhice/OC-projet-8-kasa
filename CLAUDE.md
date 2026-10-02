@@ -57,3 +57,10 @@
 - favoris : le fichier a été renommé "mobile" pour plus de compréhension"
 - dossier "optionnel" : on met de côté pour le moment
 - numérotation : il y a bien 8 étapes maintenant
+
+## Accessibilité
+
+- pendant l'intégration, mettre en place les notions d'accessibilité web de base :
+  - balises ARIA
+  - balises alt sur les images
+  - vérifier les contrastes (dans la mesure du possible)
