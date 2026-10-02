@@ -18,6 +18,16 @@
   flex: 1;
 }
 
+/* Contenu centré verticalement entre header et footer (404, log in) */
+.page__main--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 /* Empêche le défilement de la page quand le menu mobile est ouvert */
 .page:has(.mobile-menu:popover-open) {
   overflow: hidden;
@@ -33,6 +43,57 @@
   max-width: calc(69.6875rem + 2 * var(--space-4)); /* 1115px + gouttières */
   margin: 0 auto;
   padding: 0 var(--space-4);
+}
+
+
+/* --------------------------------------------------------------------------
+   Hero : titre de page, accroche et grande image (accueil, à propos)
+   -------------------------------------------------------------------------- */
+
+.hero {
+  padding-top: 3.5rem; /* 56px */
+  text-align: center;
+}
+
+.hero__title {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-base);
+  color: var(--color-primary);
+}
+
+.hero__text {
+  max-width: 42.5rem; /* 680px */
+  margin: var(--space-2) auto 0;
+  font-size: var(--font-size-md);
+}
+
+.hero__text + .hero__text {
+  margin-top: 1.25rem; /* 20px */
+}
+
+.hero__media {
+  margin-top: 2.5rem; /* 40px */
+  padding: 0 var(--space-2); /* l'image est légèrement plus étroite que les cartes sur mobile */
+}
+
+.hero__image {
+  width: 100%;
+  height: 28.625rem; /* 458px */
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+@media (min-width: 768px) {
+  .hero__media {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 2.5rem; /* 40px */
+  }
 }
 
 

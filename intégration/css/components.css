@@ -141,6 +141,26 @@
 
 
 /* --------------------------------------------------------------------------
+   Lien texte
+   <a class="link" href="…">Mot de passe oublié</a>
+   -------------------------------------------------------------------------- */
+
+.link {
+  color: var(--color-primary);
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.link--strong {
+  font-weight: var(--font-weight-medium);
+}
+
+
+/* --------------------------------------------------------------------------
    Champ de formulaire
    <div class="field">
      <label class="field__label" for="x">Label</label>

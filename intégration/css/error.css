@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Page 404
+   ========================================================================== */
+
+.error {
+  text-align: center;
+}
+
+.error__code {
+  font-size: 6.5rem; /* 104px */
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.error__text {
+  max-width: 20rem;
+  margin: var(--space-6) auto 0;
+}
+
+.error__actions {
+  display: grid;
+  gap: 0.875rem; /* 14px */
+  width: 12.5rem; /* 200px */
+  margin: 2.5rem auto 0;
+}
+
