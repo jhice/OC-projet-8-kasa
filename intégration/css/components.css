@@ -199,9 +199,10 @@
   border-color: var(--color-grey-dark);
 }
 
-.field__input:focus {
+.field__input:focus-visible {
   border-color: var(--color-primary);
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
 }
 
 .field__input--textarea {
