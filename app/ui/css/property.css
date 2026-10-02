@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Page logement
+   Mobile : une colonne (galerie, infos, hôte)
+   Tablette : galerie en mosaïque, toujours une colonne
+   Desktop : galerie + infos à gauche, carte hôte à droite
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Mise en page
+   -------------------------------------------------------------------------- */
+
+.property {
+  max-width: calc(60.625rem + 2 * var(--space-4)); /* 970px + gouttières */
+  margin-bottom: 2.5rem;
+}
+
+.property__back {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+
+.property__layout {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.property__main {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .property__back {
+    margin-bottom: var(--space-5);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .property__layout,
+  .property__main {
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .property__back {
+    padding-top: 6.25rem; /* 100px */
+  }
+
+  .property__layout {
+    grid-template-columns: minmax(0, 1fr) 21.375rem; /* colonne hôte : 342px */
+    align-items: start;
+    gap: var(--space-3);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Galerie photos
+   Mobile : grande photo + vignettes défilantes ; tablette et + : mosaïque
+   -------------------------------------------------------------------------- */
+
+.gallery {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.gallery__main {
+  width: 100%;
+  aspect-ratio: 358 / 422;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.gallery__thumbs {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gallery__thumb {
+  flex: 0 0 5.25rem; /* 84px */
+  scroll-snap-align: start;
+}
+
+.gallery__thumb-image {
+  width: 100%;
+  height: 6.875rem; /* 110px */
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem; /* 10px */
+    height: auto;
+  }
+
+  .gallery__main {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .gallery__thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.625rem;
+    overflow: visible;
+  }
+
+  .gallery__thumb-image {
+    height: 100%;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Bloc d'informations (titre, localisation, description, tags)
+   -------------------------------------------------------------------------- */
+
+.property-info {
+  padding: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.property-info__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.property-info__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.property-info__description {
+  margin-top: var(--space-6);
+}
+
+.property-info__section {
+  margin-top: 2.5rem;
+}
+
+.property-info__heading {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.property-info__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.property-info__tag {
+  justify-content: center;
+  min-width: 6.25rem; /* 100px : aligne les tags en colonnes */
+}
+
+
+/* --------------------------------------------------------------------------
+   Carte hôte
+   -------------------------------------------------------------------------- */
+
+.host-card {
+  padding: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.host-card__title {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.host-card__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.host-card__avatar {
+  width: 5.0625rem; /* 81px */
+  height: 5.0625rem;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.host-card__name {
+  font-size: 1rem;
+}
+
+.host-card__actions {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+
+/* --------------------------------------------------------------------------
+   Note (étoile + chiffre)
+   -------------------------------------------------------------------------- */
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: 1rem;
+  background-color: var(--color-grey-light);
+  border-radius: var(--radius-md);
+}
+
+.rating__star {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-primary);
+}

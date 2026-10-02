@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Page Log In
+   ========================================================================== */
+
+.login {
+  width: 100%;
+  max-width: 46.25rem; /* 740px */
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.login__inner {
+  max-width: 22.5rem; /* 360px */
+  margin: 0 auto;
+}
+
+.login__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+}
+
+.login__text {
+  margin-top: var(--space-4);
+}
+
+.login__form {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+  text-align: left;
+}
+
+.login__submit {
+  justify-self: center;
+  width: 14.375rem; /* 230px */
+  margin-top: var(--space-2);
+}
+
+.login__links {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .login__title {
+    font-size: var(--font-size-xxl);
+    white-space: nowrap; /* déborde légèrement des 360px du formulaire, comme sur la maquette */
+  }
+
+  .login {
+    padding: 5.25rem var(--space-6); /* 84px */
+  }
+}
+
+.login__signup {
+  color: var(--color-primary);
+}

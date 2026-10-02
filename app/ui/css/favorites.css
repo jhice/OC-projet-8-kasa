@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Page favoris
+   Le haut de page utilise le bloc .hero et la liste .listings (layout.css)
+   ========================================================================== */
+
+.favorites {
+  margin-bottom: 2.5rem;
+}
+
+.favorites__text-line {
+  display: inline;
+}
+
+@media (min-width: 1024px) {
+  .favorites {
+    margin-bottom: 4.5rem; /* 72px */
+  }
+
+  .favorites .hero {
+    padding-top: 4.5rem;
+  }
+
+  .favorites .listings {
+    margin-top: 4.5rem;
+  }
+
+  /* Retour à la ligne entre les deux phrases, comme sur la maquette */
+  .favorites__text-line {
+    display: block;
+  }
+}

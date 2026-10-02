@@ -1,15 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const interSans = Inter({
+  variable: "--font-inter-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./ui/css/variables.css";
+import "./ui/css/base.css";
+import "./ui/css/components.css";
+import "./ui/css/layout.css";
+
+import Image from "next/image";
+import LogoKasaIcon from "./ui/assets/logo/logo-kasa-picto.svg";
+import LogoKasa from "./ui/assets/logo/logo-kasa.svg";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,8 +21,76 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="fr">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Kasa — Gabarit</title>
+      </head>
+      <body className="page">
+        <a className="skip-link" href="#contenu">Aller au contenu</a>
+        <header className="header">
+          <div className="header__inner">
+            <nav className="header__nav" aria-label="Navigation principale">
+              <ul className="header__nav-list" role="list">
+                <li><a className="nav-link nav-link--active" href="index.html" aria-current="page">Accueil</a></li>
+                <li><a className="nav-link" href="a-propos.html">À propos</a></li>
+              </ul>
+            </nav>
+
+            <a className="header__logo" href="index.html">
+              <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
+              <Image className="header__logo-full" src={LogoKasa} alt="Kasa — accueil" width="163" height="58" />
+            </a>
+
+            <div className="header__actions">
+              <a className="header__add-link" href="ajout-logement.html">+Ajouter un logement</a>
+              <div className="header__icons">
+                <a className="header__icon-link" href="favoris.html">
+                  <span className="icon icon--heart" aria-hidden="true"></span>
+                  <span className="visually-hidden">Favoris</span>
+                </a>
+                <span className="header__separator" aria-hidden="true"></span>
+                <a className="header__icon-link" href="messagerie.html">
+                  <span className="icon icon--message" aria-hidden="true"></span>
+                  <span className="visually-hidden">Messagerie</span>
+                </a>
+              </div>
+            </div>
+
+            <button className="header__burger" type="button" popoverTarget="mobile-menu" aria-label="Ouvrir le menu">
+              <span className="icon icon--menu icon--xl" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div className="mobile-menu" id="mobile-menu" popover="auto">
+            <div className="mobile-menu__head">
+              <a href="index.html">
+                <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
+              </a>
+              <button className="mobile-menu__close" type="button" popoverTarget="mobile-menu" popoverTargetAction="hide" aria-label="Fermer le menu">
+                <span className="icon icon--close icon--xl" aria-hidden="true"></span>
+              </button>
+            </div>
+            <nav className="mobile-menu__body" aria-label="Navigation mobile">
+              <ul role="list">
+                <li className="mobile-menu__item"><a className="nav-link nav-link--active mobile-menu__link" href="index.html" aria-current="page">Accueil</a></li>
+                <li className="mobile-menu__item"><a className="nav-link mobile-menu__link" href="a-propos.html">À propos</a></li>
+                <li className="mobile-menu__item"><a className="nav-link mobile-menu__link" href="messagerie.html">Messagerie</a></li>
+                <li className="mobile-menu__item"><a className="nav-link mobile-menu__link" href="favoris.html">Favoris</a></li>
+              </ul>
+              <a className="button mobile-menu__cta" href="ajout-logement.html">Ajouter un logement</a>
+            </nav>
+          </div>
+        </header>
+
+        {children}
+
+        <footer className="footer">
+          <Image className="footer__logo" src={LogoKasaIcon} alt="" width="47" height="54" />
+          <p className="footer__copyright">© 2025 Kasa. All rights reserved</p>
+        </footer>
+      </body>
     </html>
   );
 }
