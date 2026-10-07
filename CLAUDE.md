@@ -64,3 +64,34 @@
   - balises ARIA
   - balises alt sur les images
   - vérifier les contrastes (dans la mesure du possible)
+
+# 2. Intégration des pages sous Next.js
+
+## Objectifs
+
+- créer les pages dans le dossier app/ (App Router)
+  - basé sur les intégrations présentes dans le dossier intégration/
+  - app/layout.js déjà présent avec son {children}
+  - le HTML à reprendre des les .html correspond à la balise main
+  - forme app/property/page.js
+  - le cas échéant ajouter l'appel API dans app/lib/api-bridge.js
+    - voir la fonction existante apiListProperties() et apiUserUpdate(userData, token) qui est commentée
+  - l'API est lancée (si ce n'est pas le cas dis-moi)
+- créer les liens de navigation via Link
+
+## Pages Next à créer
+
+1. la page logement
+   1. app/property/page.js
+   2. API vers la propriété et son id
+2. la page à propos
+   1. app/about/page.js
+   2. pas de requête API
+3. la page 404
+   1. page 404 à créer à la façon Next.js
+4. la page log in
+   1. app/login/page.js
+   2. appel API à traiter dans un second temps
+5. la page favoris
+   1. app/favorites/page.js
+   2. appel API à traiter dans un second temps

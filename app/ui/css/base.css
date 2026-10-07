@@ -50,6 +50,12 @@ a {
   text-decoration: none;
 }
 
+/* Lien neutralisé (page pas encore disponible) : pas de href */
+a:not([href]) {
+  cursor: default;
+  pointer-events: none;
+}
+
 ul[role="list"],
 ol[role="list"] {
   padding: 0;

@@ -87,11 +87,40 @@
   scroll-snap-align: start;
 }
 
+.gallery__thumb-button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
+}
+
 .gallery__thumb-image {
   width: 100%;
   height: 6.875rem; /* 110px */
   object-fit: cover;
   border-radius: var(--radius-lg);
+  transition: opacity var(--transition-fast);
+}
+
+.gallery__thumb-button:hover .gallery__thumb-image {
+  opacity: 0.85;
+}
+
+/* Vignette de la photo affichée en grand : cadre intérieur
+   (distinct du focus, et non rogné par la rangée défilante en mobile) */
+.gallery__thumb-button--active .gallery__thumb-image {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+/* Desktop : la mosaïque n'affiche que 4 vignettes */
+@media (min-width: 768px) {
+  .gallery__thumb:nth-child(n + 5) {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {

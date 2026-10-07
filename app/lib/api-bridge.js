@@ -7,12 +7,12 @@ const BASE_URL = "http://localhost:8000";
  * Erreur API : message exploitable pour l'UI + status HTTP (403, 404...)
  * pour permettre aux pages d'afficher forbidden() / notFound()
  */
-// export class ApiError extends Error {
-//   constructor(message, status) {
-//     super(message);
-//     this.status = status;
-//   }
-// }
+export class ApiError extends Error {
+  constructor(message, status) {
+    super(message);
+    this.status = status;
+  }
+}
 
 /**
  * Appel HTTP générique.
@@ -56,22 +56,21 @@ export async function request(pathOrUrl, { method = "GET", body, token } = {}) {
     // 404 sur une route inconnue
     if (response.status === 404) {
       // throw new Error("Erreur 404.", response.status);
-      return ({ error: true, message: "Page non trouvée." });
+      return ({ error: true, status: 404, message: "Page non trouvée." });
     }
     // throw new Error(data?.message || `Erreur ${response.status}`, response.status);
-    return ({ error: true, message: `Erreur ${response.status}` });
+    return ({ error: true, status: response.status, message: `Erreur ${response.status}` });
   }
 
   // on retourne la donnée JSON reçue, sous forme d'objet
-  return {error: false, data: response.json()};
+  return { error: false, data: await response.json() };
 }
 
 // Gère les erreurs API
 async function apiHandleRequest(url) {
   const response = await request(url);
-  console.log(response);
   if (response.error) {
-    throw new Error(response.message);
+    throw new ApiError(response.message, response.status);
   }
   return response.data;
 }
@@ -87,4 +86,8 @@ async function apiHandleRequest(url) {
 
 export function apiListProperties() {
   return apiHandleRequest("/api/properties");
+}
+
+export function apiGetProperty(id) {
+  return apiHandleRequest(`/api/properties/${encodeURIComponent(id)}`);
 }

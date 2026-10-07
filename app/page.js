@@ -8,8 +8,7 @@ import ImageHero from "./ui/assets/images/hero.jpg";
 
 export default async function Home() {
   const properties = await apiListProperties();
-  console.log(properties);
-  const propertiesForHomepage = properties.splice(0, 9);
+  const propertiesForHomepage = properties.slice(0, 9);
   return (
 
     <>
@@ -18,7 +17,7 @@ export default async function Home() {
           <h1 className="hero__title">Chez vous, <span className="hero__title-line">partout et ailleurs</span></h1>
           <p className="hero__text">Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.</p>
           <div className="hero__media">
-            <Image className="hero__image" src={ImageHero} alt="" width="1116" height="458" />
+            <Image className="hero__image" src={ImageHero} alt="" sizes="100vw" preload />
           </div>
         </section>
 
