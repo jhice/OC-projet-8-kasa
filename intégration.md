@@ -61,3 +61,40 @@ Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page
 - **Accès à la connexion** : aucun lien dans le header de la maquette, emplacement à définir.
 - **Favoris vides** : état vide à concevoir.
 - **Mot de passe oublié** : lien vers `#` pour l'instant.
+
+---
+
+# Passage à Next.js (App Router)
+
+## Routes
+
+| Page | Route | Fichier | Données |
+|---|---|---|---|
+| Accueil | `/` | `app/page.js` | API (9 logements) |
+| Logement | `/logement/[id]` | `app/logement/[id]/page.js` | API, `notFound()` si 404 |
+| À propos | `/a-propos` | `app/a-propos/page.js` | statique |
+| 404 | toute URL inconnue | `app/not-found.js` | statique |
+| Connexion | `/connexion` | `app/connexion/page.js` | statique (API à venir) |
+| Favoris | `/favoris` | `app/favoris/page.js` | provisoire : 3 premiers logements (API à venir) |
+
+## Organisation
+
+- CSS : copie de `intégration/css/` dans `app/ui/css/` ; globales importées dans `layout.js`, CSS de page importée par chaque page.
+- `app/ui/nav-link.js` (client) : `aria-current` + classe active via `usePathname()`, fermeture du menu burger au clic.
+- `app/ui/property-card.js` : props `titleLevel` (h3 accueil / h2 favoris) et `isFavorite`.
+- `app/ui/property-gallery.js` (client) : vignettes dans l'ordre (photo affichée comprise, cadre intérieur rouge), clic = photo principale.
+- `app/lib/api-bridge.js` : `apiListProperties()`, `apiGetProperty(id)`, erreurs `ApiError` avec `status`.
+- Titres : modèle `Kasa — %s` dans le layout, `metadata` / `generateMetadata` par page.
+- Images : `next/image` avec `sizes` (évite de servir du 3840px).
+
+## Écarts avec l'intégration statique
+
+- Header : « Ajouter un logement » (hors sprint) remplacé par **Connexion**, placé après Favoris / Messagerie (`.header__auth-link`). Bascule Connexion / Déconnexion à venir.
+- Liens vers des pages absentes (messagerie, mot de passe oublié, inscription) neutralisés : `<a>` sans `href` (non focusable, `pointer-events: none`).
+- Police : `--font-family` passe par `var(--font-inter-sans)` (nom généré par `next/font`).
+- Prix réels (`price_per_night` de l'API).
+
+## Reste à faire
+
+- Appels API connexion et favoris, bascule réelle du bouton favori.
+- `/` et `/favoris` sont prérendues au build : données figées en production sans `revalidate`.
