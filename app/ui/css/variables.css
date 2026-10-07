@@ -25,6 +25,7 @@
   --color-surface: var(--color-white);
   --color-border: var(--color-grey-light);           /* séparateurs décoratifs */
   --color-border-input: #8c8c8c;                     /* contraste ≥ 3:1 (WCAG 1.4.11) */
+  --color-error: var(--color-main-red);              /* 7.18:1 sur Light orange, 7.39:1 sur blanc */
 
   /* Typographie */
   --font-family: var(--font-inter-sans), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;

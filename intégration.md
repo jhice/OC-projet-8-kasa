@@ -74,8 +74,8 @@ Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page
 | Logement | `/logement/[id]` | `app/logement/[id]/page.js` | API, `notFound()` si 404 |
 | À propos | `/a-propos` | `app/a-propos/page.js` | statique |
 | 404 | toute URL inconnue | `app/not-found.js` | statique |
-| Connexion | `/connexion` | `app/connexion/page.js` | statique (API à venir) |
-| Favoris | `/favoris` | `app/favoris/page.js` | provisoire : 3 premiers logements (API à venir) |
+| Connexion | `/connexion` | `app/connexion/page.js` | API `POST /auth/login` |
+| Favoris | `/favoris` | `app/favoris/page.js` | protégée ; provisoire : 3 premiers logements (API à venir) |
 
 ## Organisation
 
@@ -94,7 +94,24 @@ Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page
 - Police : `--font-family` passe par `var(--font-inter-sans)` (nom généré par `next/font`).
 - Prix réels (`price_per_night` de l'API).
 
+## Connexion
+
+Logique reprise du projet 7 (server action + zod + session `jose`), avec ajustements.
+
+- `app/lib/definitions.js` : `SigninFormSchema` (zod 4, `trim()` avant `min(1)`, messages en français).
+- `app/actions/auth.js` : `signin` (validation → `apiLogin` → `createSession` → redirection) et `logout`.
+  - Erreurs renvoyées par champ (`z.flattenError`) ou globales (`form`) ; 401 de l'API → « Email ou mot de passe incorrect. ».
+  - L'email saisi est renvoyé et réaffiché (`defaultValue`), jamais le mot de passe.
+  - Redirection vers la page demandée (`?redirect=`), limitée aux chemins internes (`//…` et `/\…` refusés).
+- `app/lib/session.js` : cookie `session` httpOnly, `sameSite=lax`, signé HS256 (`SESSION_SECRET` dans `.env.local`), 7 jours ; contient l'utilisateur et le token API.
+- `proxy.js` : `/favoris` sans session → `/connexion?redirect=/favoris` ; `/connexion` avec session → `/`. La page favoris revérifie la session.
+- `app/ui/login-form.js` (client) : `useActionState`, `noValidate` (messages zod uniquement), focus sur le premier champ en erreur, bouton désactivé pendant l'envoi.
+- `app/ui/logout-button.js` (client) : formulaire POST vers la server action (pas de route GET `/logout`), referme le menu mobile.
+- Header : Connexion / Déconnexion selon la session lue dans le layout → toutes les pages sont rendues à la requête (plus de données figées au build).
+- Styles : `.field__input--invalid`, `.field__error`, `.form-error`, variable `--color-error`.
+- Compte de test : `test@kasa.fr` / `P@ssword123`.
+
 ## Reste à faire
 
-- Appels API connexion et favoris, bascule réelle du bouton favori.
-- `/` et `/favoris` sont prérendues au build : données figées en production sans `revalidate`.
+- Favoris : appel API (`GET /api/users/{id}/favorites`), bascule réelle du bouton favori.
+- Token API expiré ou invalide (401) : vider la session.

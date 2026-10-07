@@ -2,12 +2,18 @@ import "../ui/css/favorites.css";
 
 import PropertyCard from "../ui/property-card";
 import { apiListProperties } from "../lib/api-bridge";
+import { getSession } from "../lib/session";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Vos favoris",
 };
 
 export default async function FavoritesPage() {
+  // proxy.js redirige déjà, mais on revérifie au plus près des données
+  const session = await getSession();
+  if (!session) redirect("/connexion?redirect=/favoris");
+
   // TODO : remplacer par l'appel API des favoris de l'utilisateur connecté
   const properties = await apiListProperties();
   const favorites = properties.slice(0, 3);

@@ -173,7 +173,10 @@
 }
 
 .header__auth-link {
+  padding: 0; /* reset quand c'est un bouton (Déconnexion) */
   font-size: var(--font-size-md);
+  background: none;
+  border: none;
   color: var(--color-primary);
   transition: color var(--transition-fast);
 }

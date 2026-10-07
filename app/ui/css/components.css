@@ -205,6 +205,30 @@
   outline-offset: 0;
 }
 
+/* Erreurs : bordure + message (la couleur n'est pas le seul indicateur) */
+.field__input--invalid,
+.field__input--invalid:hover {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+.field__error {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-error);
+}
+
+.form-error {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-error);
+  text-align: center;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+}
+
 .field__input--textarea {
   min-height: 7.5rem; /* 120px */
   resize: vertical;

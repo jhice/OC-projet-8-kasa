@@ -67,8 +67,8 @@ export async function request(pathOrUrl, { method = "GET", body, token } = {}) {
 }
 
 // Gère les erreurs API
-async function apiHandleRequest(url) {
-  const response = await request(url);
+async function apiHandleRequest(url, options) {
+  const response = await request(url, options);
   if (response.error) {
     throw new ApiError(response.message, response.status);
   }
@@ -79,6 +79,15 @@ async function apiHandleRequest(url) {
 // export function apiUserUpdate(userData, token) {
 //   return request("/auth/profile", { method: "PUT", body: userData, token });
 // }
+
+/**
+ * Auth
+ */
+
+// Retourne { token, user } — 401 si identifiants incorrects
+export function apiLogin(email, password) {
+  return apiHandleRequest("/auth/login", { method: "POST", body: { email, password } });
+}
 
 /**
  * Properties

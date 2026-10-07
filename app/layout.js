@@ -13,6 +13,8 @@ import "./ui/css/layout.css";
 import Image from "next/image";
 import Link from "next/link";
 import NavLink from "./ui/nav-link";
+import LogoutButton from "./ui/logout-button";
+import { getSession } from "./lib/session";
 import LogoKasaIcon from "./ui/assets/logo/logo-kasa-picto.svg";
 import LogoKasa from "./ui/assets/logo/logo-kasa.svg";
 
@@ -24,7 +26,10 @@ export const metadata = {
   description: "Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  // Lecture du cookie de session : toutes les pages sont rendues à la requête
+  const session = await getSession();
+
   return (
     <html lang="fr" className={interSans.variable}>
       <body className="page">
@@ -56,8 +61,9 @@ export default function RootLayout({ children }) {
                   <span className="visually-hidden">Messagerie</span>
                 </a>
               </div>
-              {/* TODO : Connexion / Déconnexion selon l'état de l'utilisateur */}
-              <NavLink className="header__auth-link" href="/connexion">Connexion</NavLink>
+              {session
+                ? <LogoutButton className="header__auth-link" />
+                : <NavLink className="header__auth-link" href="/connexion">Connexion</NavLink>}
             </div>
 
             <button className="header__burger" type="button" popoverTarget="mobile-menu" aria-label="Ouvrir le menu">
@@ -82,8 +88,9 @@ export default function RootLayout({ children }) {
                 <li className="mobile-menu__item"><a className="nav-link mobile-menu__link">Messagerie</a></li>
                 <li className="mobile-menu__item"><NavLink className="nav-link mobile-menu__link" activeClassName="nav-link--active" href="/favoris">Favoris</NavLink></li>
               </ul>
-              {/* TODO : Connexion / Déconnexion selon l'état de l'utilisateur */}
-              <NavLink className="button mobile-menu__cta" href="/connexion">Connexion</NavLink>
+              {session
+                ? <LogoutButton className="button mobile-menu__cta" />
+                : <NavLink className="button mobile-menu__cta" href="/connexion">Connexion</NavLink>}
             </nav>
           </div>
         </header>
