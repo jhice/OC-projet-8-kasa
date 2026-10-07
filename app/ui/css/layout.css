@@ -3,6 +3,9 @@
    Mobile-first : burger sur mobile et tablette, navigation complète dès 1024px
    ========================================================================== */
 
+html {
+  overflow-y: scroll;
+}
 
 /* --------------------------------------------------------------------------
    Structure de page : footer toujours en bas
@@ -40,7 +43,8 @@
 
 .container {
   width: 100%;
-  max-width: calc(69.6875rem + 2 * var(--space-4)); /* 1115px + gouttières */
+  max-width: calc(69.6875rem + 2 * var(--space-4));
+  /* 1115px + gouttières */
   margin: 0 auto;
   padding: 0 var(--space-4);
 }
@@ -51,7 +55,8 @@
    -------------------------------------------------------------------------- */
 
 .hero {
-  padding-top: 3.5rem; /* 56px */
+  padding-top: 3.5rem;
+  /* 56px */
   text-align: center;
 }
 
@@ -63,23 +68,28 @@
 }
 
 .hero__text {
-  max-width: 42.5rem; /* 680px */
+  max-width: 42.5rem;
+  /* 680px */
   margin: var(--space-2) auto 0;
   font-size: var(--font-size-md);
 }
 
-.hero__text + .hero__text {
-  margin-top: 1.25rem; /* 20px */
+.hero__text+.hero__text {
+  margin-top: 1.25rem;
+  /* 20px */
 }
 
 .hero__media {
-  margin-top: 2.5rem; /* 40px */
-  padding: 0 var(--space-2); /* l'image est légèrement plus étroite que les cartes sur mobile */
+  margin-top: 2.5rem;
+  /* 40px */
+  padding: 0 var(--space-2);
+  /* l'image est légèrement plus étroite que les cartes sur mobile */
 }
 
 .hero__image {
   width: 100%;
-  height: 28.625rem; /* 458px */
+  height: 28.625rem;
+  /* 458px */
   object-fit: cover;
   border-radius: var(--radius-xl);
 }
@@ -92,7 +102,8 @@
 
 @media (min-width: 1024px) {
   .hero {
-    padding-top: 2.5rem; /* 40px */
+    padding-top: 2.5rem;
+    /* 40px */
   }
 }
 
@@ -102,7 +113,8 @@
    -------------------------------------------------------------------------- */
 
 .listings {
-  margin-top: 2.5rem; /* 40px */
+  margin-top: 2.5rem;
+  /* 40px */
 }
 
 .listings__grid {
@@ -143,7 +155,8 @@
 }
 
 .header__logo-picto {
-  width: 2.875rem; /* 46px */
+  width: 2.875rem;
+  /* 46px */
   height: auto;
 }
 
@@ -173,7 +186,8 @@
 }
 
 .header__auth-link {
-  padding: 0; /* reset quand c'est un bouton (Déconnexion) */
+  padding: 0;
+  /* reset quand c'est un bouton (Déconnexion) */
   font-size: var(--font-size-md);
   background: none;
   border: none;
@@ -219,15 +233,18 @@
 
 @media (min-width: 1024px) {
   .header {
-    padding: 2.5rem var(--space-4) 0; /* 40px */
+    padding: 2.5rem var(--space-4) 0;
+    /* 40px */
     background-color: transparent;
   }
 
   .header__inner {
     justify-content: center;
     gap: var(--space-7);
-    max-width: 48.75rem; /* 780px */
-    min-height: 3.5rem;  /* 56px */
+    max-width: 48.75rem;
+    /* 780px */
+    min-height: 3.5rem;
+    /* 56px */
     margin: 0 auto;
     padding: var(--space-2) var(--space-6);
     background-color: var(--color-surface);
@@ -246,7 +263,8 @@
 
   .header__logo-full {
     display: block;
-    width: 7.1875rem; /* 115px */
+    width: 7.1875rem;
+    /* 115px */
     height: auto;
   }
 
@@ -354,13 +372,15 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-2) 2.5rem; /* 40px, identique sur toutes les tailles */
+  padding: var(--space-2) 2.5rem;
+  /* 40px, identique sur toutes les tailles */
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
 }
 
 .footer__logo {
-  width: 2.875rem; /* 46px */
+  width: 2.875rem;
+  /* 46px */
   height: auto;
 }
 

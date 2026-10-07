@@ -63,7 +63,7 @@ export default async function RootLayout({ children }) {
               </div>
               {session
                 ? <LogoutButton className="header__auth-link" />
-                : <NavLink className="header__auth-link" href="/connexion">Connexion</NavLink>}
+                : <NavLink className="header__auth-link" activeClassName="nav-link--active" href="/connexion">Connexion</NavLink>}
             </div>
 
             <button className="header__burger" type="button" popoverTarget="mobile-menu" aria-label="Ouvrir le menu">

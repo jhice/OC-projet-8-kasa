@@ -135,8 +135,10 @@
 }
 
 .nav-link--active {
-  font-weight: var(--font-weight-bold);
+  /* le gras fait bouger l'interface @Opquast */
+  /* font-weight: var(--font-weight-bold); */
   color: var(--color-primary);
+  text-decoration: underline;
 }
 
 
