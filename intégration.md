@@ -23,10 +23,11 @@ intégration/
 │   ├── base.css        reset, styles globaux, lien d'évitement, reduced-motion
 │   ├── components.css  composants de la planche Figma
 │   ├── layout.css      structure de page, conteneur, hero, grille de cartes, header, menu mobile, footer
-│   ├── home.css | property.css | about.css | error.css | login.css | favorites.css
+│   ├── home.css | property.css | about.css | error.css | login.css | favorites.css | messaging.css
 ├── gabarit.html        squelette commun (header + main + footer)
 ├── composants.html     page de démonstration des composants
 ├── index.html | logement.html | a-propos.html | 404.html | connexion.html | favoris.html
+├── messagerie.html | messagerie-conversation.html
 ```
 
 \* `star.svg` créée (absente des exports) ; `heart.svg` (contour) et `heart-filled.svg` (plein) dérivées de `Favoris.svg`.
@@ -41,6 +42,11 @@ intégration/
 6. **404** — « 404 » en Inter 800, deux boutons de retour.
 7. **Log In** (`connexion.html`) — carte centrée, formulaire email / mot de passe.
 8. **Favoris** — hero + grille de cartes, bouton favori actif (fond rouge, cœur blanc).
+9. **Messagerie** (statique) — 3 conversations, une conversation détaillée sans doublon.
+   - Mobile (< 768px) : un écran à la fois — `messagerie.html` (liste, `.messaging--list`) et `messagerie-conversation.html` (conversation, `.messaging--thread`, bouton retour vers la liste).
+   - Dès 768px : panneau à deux colonnes (liste 280px, 372px en desktop), seuls les messages défilent, zone de saisie en bas.
+   - Mobile : panneau pleine largeur et pleine hauteur, zone de saisie collée en bas (`sticky`).
+   - Page logement : « Contacter l'hôte » retiré, seul « Envoyer un message » reste (→ messagerie).
 
 Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page__main--centered` (dans `layout.css`).
 
@@ -76,6 +82,8 @@ Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page
 | 404 | toute URL inconnue | `app/not-found.js` | statique |
 | Connexion | `/connexion` | `app/connexion/page.js` | API `POST /auth/login` |
 | Favoris | `/favoris` | `app/favoris/page.js` | protégée ; API `GET /api/users/{id}/favorites` |
+| Messagerie | `/messagerie` | `app/messagerie/page.js` | protégée ; JSX statique |
+| Conversation | `/messagerie/conversation` | `app/messagerie/conversation/page.js` | protégée ; JSX statique |
 
 ## Organisation
 
@@ -124,7 +132,15 @@ Logique reprise du projet 7 (server action + zod + session `jose`), avec ajustem
   - dans un composant serveur (qui ne peut pas modifier les cookies) : redirection vers la route `app/session-expiree/route.js`, qui supprime le cookie puis redirige vers `/connexion`.
 - `app/lib/safe-redirect.js` : contrôle des redirections internes, partagé entre connexion et favoris.
 
+## Messagerie (statique)
+
+- Deux pages en JSX statique, copies du `<main>` de `messagerie.html` et `messagerie-conversation.html` (pas de données JS ni de composants) : `/messagerie` (liste, `.messaging--list`) et `/messagerie/conversation` (conversation, `.messaging--thread`). Toutes les conversations pointent vers `/messagerie/conversation`.
+- Titres : `/messagerie` → h1 « Messages », conversation en h2 (masqué) ; `/messagerie/conversation` → h1 « Conversation avec … » (masqué), liste en h2. Chaque écran mobile a ainsi son h1.
+- Protection : `/messagerie` et ses sous-pages dans `proxy.js` ; `requireSession()` (`app/lib/session.js`) revérifie dans chaque page (aussi utilisé par les favoris).
+- Navigation : icône du header et lien du menu mobile actifs aussi sur `/messagerie/conversation` (`NavLink` + `matchSubpaths`, `aria-current="true"` sur une sous-page).
+- Page logement : « Envoyer un message » → `/messagerie`.
+
 ## Reste à faire
 
 - Retour d'erreur visuel sur le bouton favori (aujourd'hui : cœur qui revient à son état + message pour lecteurs d'écran).
-- Messagerie (fonctionnement à clarifier).
+- Messagerie : API (conversations, envoi de message) ; découper alors les pages en composants (liste, conversation) alimentés par les données, avec une route `/messagerie/[id]`.

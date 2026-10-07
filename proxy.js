@@ -7,14 +7,18 @@
 import { NextResponse } from "next/server";
 import { decrypt } from "./app/lib/session";
 
-const protectedRoutes = ["/favoris"];
+// Une route protégée couvre aussi ses sous-pages (/messagerie → /messagerie/conversation)
+const protectedRoutes = ["/favoris", "/messagerie"];
 const authRoutes = ["/connexion"];
+
+const isProtected = (pathname) =>
+  protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
 
 export default async function proxy(request) {
   const { pathname, search } = request.nextUrl;
   const session = await decrypt(request.cookies.get("session")?.value);
 
-  if (protectedRoutes.includes(pathname) && !session?.userId) {
+  if (isProtected(pathname) && !session?.userId) {
     const loginUrl = new URL("/connexion", request.nextUrl);
     loginUrl.searchParams.set("redirect", pathname + search);
     return NextResponse.redirect(loginUrl);
@@ -29,5 +33,5 @@ export default async function proxy(request) {
 
 // Uniquement les routes concernées (pas les assets ni les autres pages)
 export const config = {
-  matcher: ["/favoris", "/connexion"],
+  matcher: ["/favoris", "/connexion", "/messagerie/:path*"],
 };

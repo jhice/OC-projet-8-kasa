@@ -82,9 +82,7 @@ export default async function PropertyPage({ params }) {
             </p>
           </div>
           <div className="host-card__actions">
-            <button className="button button--block" type="button">Contacter l’hôte</button>
-            {/* Messagerie : page pas encore disponible */}
-            <a className="button button--block">Envoyer un message</a>
+            <Link className="button button--block" href="/messagerie">Envoyer un message</Link>
           </div>
         </aside>
       </div>

@@ -55,11 +55,10 @@ export default async function RootLayout({ children }) {
                   <span className="visually-hidden">Favoris</span>
                 </NavLink>
                 <span className="header__separator" aria-hidden="true"></span>
-                {/* Messagerie : page pas encore disponible */}
-                <a className="header__icon-link">
+                <NavLink className="header__icon-link" activeClassName="header__icon-link--active" href="/messagerie" matchSubpaths>
                   <span className="icon icon--message" aria-hidden="true"></span>
                   <span className="visually-hidden">Messagerie</span>
-                </a>
+                </NavLink>
               </div>
               {session
                 ? <LogoutButton className="header__auth-link" />
@@ -84,8 +83,7 @@ export default async function RootLayout({ children }) {
               <ul role="list">
                 <li className="mobile-menu__item"><NavLink className="nav-link mobile-menu__link" activeClassName="nav-link--active" href="/">Accueil</NavLink></li>
                 <li className="mobile-menu__item"><NavLink className="nav-link mobile-menu__link" activeClassName="nav-link--active" href="/a-propos">À propos</NavLink></li>
-                {/* Messagerie : page pas encore disponible */}
-                <li className="mobile-menu__item"><a className="nav-link mobile-menu__link">Messagerie</a></li>
+                <li className="mobile-menu__item"><NavLink className="nav-link mobile-menu__link" activeClassName="nav-link--active" href="/messagerie" matchSubpaths>Messagerie</NavLink></li>
                 <li className="mobile-menu__item"><NavLink className="nav-link mobile-menu__link" activeClassName="nav-link--active" href="/favoris">Favoris</NavLink></li>
               </ul>
               {session

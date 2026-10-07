@@ -1,10 +1,9 @@
 import "../ui/css/favorites.css";
 
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import PropertyCard from "../ui/property-card";
-import { getSession } from "../lib/session";
+import { requireSession } from "../lib/session";
 import { getFavorites } from "../lib/favorites";
 
 export const metadata = {
@@ -12,9 +11,7 @@ export const metadata = {
 };
 
 export default async function FavoritesPage() {
-  // proxy.js redirige déjà, mais on revérifie au plus près des données
-  const session = await getSession();
-  if (!session) redirect("/connexion?redirect=/favoris");
+  await requireSession("/favoris");
 
   const favorites = await getFavorites();
 

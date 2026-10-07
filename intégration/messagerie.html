@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasa — Messagerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/messaging.css">
+</head>
+<body class="page">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="header">
+    <div class="header__inner">
+      <nav class="header__nav" aria-label="Navigation principale">
+        <ul class="header__nav-list" role="list">
+          <li><a class="nav-link" href="index.html">Accueil</a></li>
+          <li><a class="nav-link" href="a-propos.html">À propos</a></li>
+        </ul>
+      </nav>
+
+      <a class="header__logo" href="index.html">
+        <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        <img class="header__logo-full" src="assets/logo/logo-kasa.svg" alt="Kasa — accueil" width="163" height="58">
+      </a>
+
+      <div class="header__actions">
+        <a class="header__add-link" href="ajout-logement.html">+Ajouter un logement</a>
+        <div class="header__icons">
+          <a class="header__icon-link" href="favoris.html">
+            <span class="icon icon--heart" aria-hidden="true"></span>
+            <span class="visually-hidden">Favoris</span>
+          </a>
+          <span class="header__separator" aria-hidden="true"></span>
+          <a class="header__icon-link header__icon-link--active" href="messagerie.html" aria-current="page">
+            <span class="icon icon--message" aria-hidden="true"></span>
+            <span class="visually-hidden">Messagerie</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="header__burger" type="button" popovertarget="mobile-menu" aria-label="Ouvrir le menu">
+        <span class="icon icon--menu icon--xl" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" popover>
+      <div class="mobile-menu__head">
+        <a href="index.html">
+          <img class="header__logo-picto" src="assets/logo/logo-kasa-picto.svg" alt="Kasa — accueil" width="47" height="54">
+        </a>
+        <button class="mobile-menu__close" type="button" popovertarget="mobile-menu" popovertargetaction="hide" aria-label="Fermer le menu">
+          <span class="icon icon--close icon--xl" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav class="mobile-menu__body" aria-label="Navigation mobile">
+        <ul role="list">
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="index.html">Accueil</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="a-propos.html">À propos</a></li>
+          <li class="mobile-menu__item"><a class="nav-link nav-link--active mobile-menu__link" href="messagerie.html" aria-current="page">Messagerie</a></li>
+          <li class="mobile-menu__item"><a class="nav-link mobile-menu__link" href="favoris.html">Favoris</a></li>
+        </ul>
+        <a class="button mobile-menu__cta" href="ajout-logement.html">Ajouter un logement</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1" class="page__main container messaging messaging--list">
+    <div class="messaging__panel">
+      <section class="inbox" aria-labelledby="inbox-title">
+        <a class="button button--secondary button--with-icon inbox__back" href="index.html">
+          <span class="icon icon--back" aria-hidden="true"></span>Retour<span class="visually-hidden"> à l’accueil</span>
+        </a>
+        <h1 class="inbox__title" id="inbox-title">Messages</h1>
+        <ul class="inbox__list" role="list">
+          <li>
+            <a class="conversation conversation--active" href="messagerie-conversation.html" aria-current="true">
+              <img class="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-12.jpg" alt="" width="44" height="44">
+              <span class="conversation__name">Nathalie Jean</span>
+              <time class="conversation__time" datetime="2025-09-03T11:10">11:10</time>
+              <span class="conversation__preview">Pas de souci, je vous attendrai sur place pour la remise des clés.</span>
+            </a>
+          </li>
+          <li>
+            <a class="conversation conversation--unread" href="messagerie-conversation.html">
+              <img class="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-1.jpg" alt="" width="44" height="44">
+              <span class="conversation__name">Della Case</span>
+              <time class="conversation__time" datetime="2025-09-03T09:47">09:47</time>
+              <span class="conversation__preview">Merci pour votre séjour ! N’hésitez pas à laisser un avis sur le logement.</span>
+              <span class="conversation__unread"><span class="visually-hidden">Non lu</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="conversation" href="messagerie-conversation.html">
+              <img class="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-2.jpg" alt="" width="44" height="44">
+              <span class="conversation__name">Franck Maher</span>
+              <time class="conversation__time" datetime="2025-09-02T18:21">Hier</time>
+              <span class="conversation__preview">Le studio dispose bien d’une connexion WiFi, le code est dans le livret d’accueil.</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="thread" aria-labelledby="thread-title">
+        <div class="thread__back">
+          <a class="button button--secondary button--with-icon" href="messagerie.html">
+            <span class="icon icon--back" aria-hidden="true"></span>Retour<span class="visually-hidden"> aux conversations</span>
+          </a>
+        </div>
+        <h2 class="visually-hidden" id="thread-title">Conversation avec Nathalie Jean</h2>
+        <ol class="thread__messages" role="list" tabindex="0" aria-label="Messages échangés avec Nathalie Jean">
+          <li class="thread__date"><time datetime="2025-09-03">3 septembre 2025</time></li>
+          <li class="message message--sent">
+            <span class="message__avatar" aria-hidden="true"></span>
+            <div class="message__content">
+              <p class="message__meta">Vous <span aria-hidden="true">•</span> <time datetime="2025-09-03T11:02">11:02</time></p>
+              <p class="message__bubble">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</p>
+            </div>
+          </li>
+          <li class="message message--received">
+            <img class="message__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-12.jpg" alt="" width="28" height="28">
+            <div class="message__content">
+              <p class="message__meta">Nathalie Jean <span aria-hidden="true">•</span> <time datetime="2025-09-03T11:04">11:04</time></p>
+              <p class="message__bubble">Bonjour ! Oui, l’appartement est libre ces dates-là. Vous serez combien ?</p>
+            </div>
+          </li>
+          <li class="message message--sent">
+            <span class="message__avatar" aria-hidden="true"></span>
+            <div class="message__content">
+              <p class="message__meta">Vous <span aria-hidden="true">•</span> <time datetime="2025-09-03T11:06">11:06</time></p>
+              <p class="message__bubble">Nous serons deux. Est-il possible d’arriver vers 18 h le vendredi ?</p>
+            </div>
+          </li>
+          <li class="message message--received">
+            <img class="message__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-12.jpg" alt="" width="28" height="28">
+            <div class="message__content">
+              <p class="message__meta">Nathalie Jean <span aria-hidden="true">•</span> <time datetime="2025-09-03T11:10">11:10</time></p>
+              <p class="message__bubble">Pas de souci, je vous attendrai sur place pour la remise des clés.</p>
+            </div>
+          </li>
+        </ol>
+        <form class="composer" action="#" method="post">
+          <div class="composer__field">
+            <label class="visually-hidden" for="composer-input">Votre message à Nathalie Jean</label>
+            <textarea class="composer__input" id="composer-input" name="message" rows="1" placeholder="Envoyer un message"></textarea>
+            <button class="button button--icon composer__send" type="submit" aria-label="Envoyer le message">
+              <span class="icon icon--send" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <img class="footer__logo" src="assets/logo/logo-kasa-picto.svg" alt="" width="47" height="54">
+    <p class="footer__copyright">© 2025 Kasa. All rights reserved</p>
+  </footer>
+</body>
+</html>

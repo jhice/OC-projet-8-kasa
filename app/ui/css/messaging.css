@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Page Messagerie
+   Mobile / tablette < 768px : un écran à la fois
+     .messaging--list   → liste des conversations
+     .messaging--thread → conversation détaillée
+   Dès 768px : liste et conversation côte à côte dans un panneau
+   ========================================================================== */
+
+/* Mobile : panneau pleine largeur (annule la gouttière du .container)
+   et pleine hauteur jusqu'au footer */
+.messaging {
+  display: flex;
+  flex-direction: column;
+}
+
+.messaging__panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0 calc(-1 * var(--space-4));
+  background-color: var(--color-surface);
+}
+
+.messaging--list .thread,
+.messaging--thread .inbox {
+  display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Liste des conversations
+   -------------------------------------------------------------------------- */
+
+.inbox {
+  padding: var(--space-5) 0 var(--space-6);
+}
+
+.inbox__back {
+  margin-left: var(--space-2);
+}
+
+.inbox__title {
+  margin: var(--space-6) var(--space-3) var(--space-5);
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+
+.conversation {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) auto; /* avatar 44px */
+  grid-template-areas:
+    "avatar name    time"
+    "avatar preview unread";
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  align-items: center;
+  padding: var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.conversation:hover {
+  background-color: var(--color-grey-light);
+}
+
+.conversation--active,
+.conversation--active:hover {
+  background-color: var(--color-background);
+}
+
+.conversation__avatar {
+  grid-area: avatar;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.conversation__name {
+  grid-area: name;
+  font-size: var(--font-size-md);
+}
+
+.conversation--unread .conversation__name {
+  font-weight: var(--font-weight-bold);
+}
+
+.conversation__time {
+  grid-area: time;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.conversation__preview {
+  grid-area: preview;
+  overflow: hidden;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Pastille « non lu » */
+.conversation__unread {
+  grid-area: unread;
+  justify-self: end;
+  width: 0.375rem; /* 6px */
+  height: 0.375rem;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+}
+
+
+/* --------------------------------------------------------------------------
+   Conversation détaillée
+   -------------------------------------------------------------------------- */
+
+.thread {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+.thread__back {
+  padding: var(--space-3) var(--space-2);
+  background-color: var(--color-surface);
+}
+
+/* .thread .thread__messages : plus spécifique que ol[role="list"] de base.css */
+.thread .thread__messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-2);
+}
+
+/* Séparateur de date : traits de part et d'autre */
+.thread__date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.thread__date::before,
+.thread__date::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--color-border-input);
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+/* Message envoyé : à droite, avatar à droite */
+.message--sent {
+  flex-direction: row-reverse;
+}
+
+.message__avatar {
+  flex-shrink: 0;
+  width: 1.75rem; /* 28px */
+  height: 1.75rem;
+  object-fit: cover;
+  background-color: var(--color-grey-dark);
+  border-radius: var(--radius-sm);
+}
+
+.message__content {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 80%;
+}
+
+.message__meta {
+  font-size: 0.625rem; /* 10px */
+  color: var(--color-text-muted);
+}
+
+.message--sent .message__meta {
+  text-align: right;
+}
+
+.message__bubble {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  border-top-left-radius: var(--radius-sm);
+}
+
+.message--sent .message__bubble {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  border-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-sm);
+}
+
+
+/* --------------------------------------------------------------------------
+   Zone de saisie
+   -------------------------------------------------------------------------- */
+
+/* Mobile : reste visible en bas de l'écran pendant le défilement */
+.composer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.composer__field {
+  position: relative;
+}
+
+.composer__input {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem; /* 44px */
+  padding: var(--space-3) 3.25rem var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--radius-lg);
+  resize: none;
+}
+
+.composer__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.composer__input:focus-visible {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
+}
+
+.composer__send {
+  position: absolute;
+  right: var(--space-2);
+  bottom: 0.375rem; /* centré sur la hauteur mobile (44px) */
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablette et desktop : panneau à deux colonnes
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .messaging {
+    display: block;
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-7);
+  }
+
+  .messaging__panel {
+    display: grid;
+    grid-template-columns: 17.5rem minmax(0, 1fr); /* liste : 280px */
+    height: calc(100dvh - 10rem);
+    min-height: 34rem;
+    max-height: 51rem;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 24px rgb(13 13 13 / 0.06);
+  }
+
+  /* Les deux colonnes sont toujours visibles */
+  .messaging--list .thread {
+    display: flex;
+  }
+
+  .messaging--thread .inbox {
+    display: block;
+  }
+
+  .inbox {
+    overflow-y: auto;
+    padding: var(--space-6) var(--space-2);
+    border-right: 1px solid var(--color-border);
+  }
+
+  .thread {
+    min-height: 0;
+  }
+
+  /* Le retour vers la liste ne sert qu'en mobile */
+  .thread__back {
+    display: none;
+  }
+
+  /* Seuls les messages défilent, la zone de saisie reste en bas */
+  .thread .thread__messages {
+    overflow-y: auto;
+    padding: var(--space-6) var(--space-6);
+  }
+
+  .message__content {
+    max-width: min(70%, 17.5rem);
+  }
+
+  .message__bubble {
+    font-size: var(--font-size-sm);
+  }
+
+  .composer {
+    position: static;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .composer__input {
+    min-height: 6rem; /* 96px */
+    padding-right: var(--space-4);
+    padding-bottom: 3.25rem; /* place du bouton d'envoi */
+  }
+
+  .composer__send {
+    bottom: var(--space-2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .messaging__panel {
+    grid-template-columns: 23.25rem minmax(0, 1fr); /* liste : 372px */
+  }
+
+  .inbox {
+    padding: var(--space-6) var(--space-2);
+  }
+
+  .thread .thread__messages {
+    padding: var(--space-6) 2.5rem;
+  }
+}

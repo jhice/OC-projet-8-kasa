@@ -1,6 +1,7 @@
 import "server-only";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 // Session stockée dans un cookie httpOnly, signé (non lisible ni modifiable côté navigateur).
 // Elle contient l'utilisateur et le token de l'API, à renvoyer en Bearer.
@@ -50,6 +51,14 @@ export async function createSession(user, apiToken) {
 export async function getSession() {
   const cookie = (await cookies()).get(SESSION_COOKIE)?.value;
   return decrypt(cookie);
+}
+
+// Page réservée aux utilisateurs connectés : proxy.js redirige déjà,
+// mais on revérifie au plus près des données (recommandation Next.js)
+export async function requireSession(currentPath) {
+  const session = await getSession();
+  if (!session) redirect(`/connexion?redirect=${encodeURIComponent(currentPath)}`);
+  return session;
 }
 
 export async function deleteSession() {
