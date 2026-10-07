@@ -90,6 +90,24 @@ export function apiLogin(email, password) {
 }
 
 /**
+ * Favoris (token requis)
+ */
+
+// Logements favoris de l'utilisateur (403 si ce n'est pas le sien)
+export function apiListFavorites(userId, token) {
+  return apiHandleRequest(`/api/users/${encodeURIComponent(userId)}/favorites`, { token });
+}
+
+// Ajout / retrait idempotents : { ok: true } même si déjà en favori / déjà retiré
+export function apiAddFavorite(propertyId, token) {
+  return apiHandleRequest(`/api/properties/${encodeURIComponent(propertyId)}/favorite`, { method: "POST", token });
+}
+
+export function apiRemoveFavorite(propertyId, token) {
+  return apiHandleRequest(`/api/properties/${encodeURIComponent(propertyId)}/favorite`, { method: "DELETE", token });
+}
+
+/**
  * Properties
  */
 

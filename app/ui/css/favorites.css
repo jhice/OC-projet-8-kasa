@@ -29,3 +29,20 @@
     display: block;
   }
 }
+
+/* État vide (aucun favori) */
+.favorites__empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.favorites__empty-button {
+  margin-top: var(--space-4);
+}

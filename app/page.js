@@ -2,12 +2,13 @@ import "./ui/css/home.css";
 
 import PropertyCard from "./ui/property-card";
 import { apiListProperties } from "./lib/api-bridge";
+import { getFavoriteIds } from "./lib/favorites";
 
 import Image from "next/image";
 import ImageHero from "./ui/assets/images/hero.jpg";
 
 export default async function Home() {
-  const properties = await apiListProperties();
+  const [properties, favoriteIds] = await Promise.all([apiListProperties(), getFavoriteIds()]);
   const propertiesForHomepage = properties.slice(0, 9);
   return (
 
@@ -25,7 +26,7 @@ export default async function Home() {
           <h2 className="visually-hidden" id="listings-title">Nos logements</h2>
           <ul className="listings__grid" role="list">
             {propertiesForHomepage.map((property) => (
-              <PropertyCard key={property.id} property={property} />
+              <PropertyCard key={property.id} property={property} isFavorite={favoriteIds.has(property.id)} />
             ))}
           </ul>
         </section>

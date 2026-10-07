@@ -6,12 +6,7 @@ import { redirect } from "next/navigation";
 import { SigninFormSchema } from "../lib/definitions";
 import { apiLogin } from "../lib/api-bridge";
 import { createSession, deleteSession } from "../lib/session";
-
-// N'accepte qu'un chemin interne ("/favoris"), jamais une URL externe :
-// "//site.com" et "/\site.com" (lu "//site.com" par les navigateurs) sont refusés
-function safeRedirectPath(path) {
-  return typeof path === "string" && /^\/(?![/\\])/.test(path) ? path : "/";
-}
+import { safeRedirectPath } from "../lib/safe-redirect";
 
 export async function signin(state, formData) {
   const email = formData.get("email") ?? "";

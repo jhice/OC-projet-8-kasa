@@ -1,9 +1,11 @@
 import "../ui/css/favorites.css";
 
-import PropertyCard from "../ui/property-card";
-import { apiListProperties } from "../lib/api-bridge";
-import { getSession } from "../lib/session";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import PropertyCard from "../ui/property-card";
+import { getSession } from "../lib/session";
+import { getFavorites } from "../lib/favorites";
 
 export const metadata = {
   title: "Vos favoris",
@@ -14,9 +16,7 @@ export default async function FavoritesPage() {
   const session = await getSession();
   if (!session) redirect("/connexion?redirect=/favoris");
 
-  // TODO : remplacer par l'appel API des favoris de l'utilisateur connecté
-  const properties = await apiListProperties();
-  const favorites = properties.slice(0, 3);
+  const favorites = await getFavorites();
 
   return (
     <main id="contenu" tabIndex="-1" className="page__main container favorites">
@@ -29,11 +29,19 @@ export default async function FavoritesPage() {
       </section>
 
       <section className="listings" aria-label="Logements favoris">
-        <ul className="listings__grid" role="list">
-          {favorites.map((property) => (
-            <PropertyCard key={property.id} property={property} titleLevel={2} isFavorite />
-          ))}
-        </ul>
+        {favorites.length > 0 ? (
+          <ul className="listings__grid" role="list">
+            {favorites.map((property) => (
+              <PropertyCard key={property.id} property={property} titleLevel={2} isFavorite />
+            ))}
+          </ul>
+        ) : (
+          <div className="favorites__empty">
+            <p>Vous n’avez pas encore de favoris.</p>
+            <p>Cliquez sur le cœur d’un logement pour le retrouver ici.</p>
+            <Link className="button favorites__empty-button" href="/">Découvrir nos logements</Link>
+          </div>
+        )}
       </section>
     </main>
   );

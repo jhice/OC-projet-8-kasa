@@ -75,7 +75,7 @@ Blocs mutualisés en cours de route : `.container`, `.hero`, `.listings`, `.page
 | À propos | `/a-propos` | `app/a-propos/page.js` | statique |
 | 404 | toute URL inconnue | `app/not-found.js` | statique |
 | Connexion | `/connexion` | `app/connexion/page.js` | API `POST /auth/login` |
-| Favoris | `/favoris` | `app/favoris/page.js` | protégée ; provisoire : 3 premiers logements (API à venir) |
+| Favoris | `/favoris` | `app/favoris/page.js` | protégée ; API `GET /api/users/{id}/favorites` |
 
 ## Organisation
 
@@ -111,7 +111,20 @@ Logique reprise du projet 7 (server action + zod + session `jose`), avec ajustem
 - Styles : `.field__input--invalid`, `.field__error`, `.form-error`, variable `--color-error`.
 - Compte de test : `test@kasa.fr` / `P@ssword123`.
 
+## Favoris
+
+- `app/lib/favorites.js` (serveur) : `getFavorites()` / `getFavoriteIds()`, mis en cache par requête (`cache()` de React) ; `[]` si déconnecté.
+- `app/actions/favorites.js` : `toggleFavorite(propertyId, favorite, currentPath)` → `POST` / `DELETE /api/properties/{id}/favorite` (idempotents), puis `refresh()` pour recharger la page.
+  - Déconnecté → `/connexion?redirect=<page en cours>`.
+- `app/ui/favorite-button.js` (client) : bascule immédiate avec `useOptimistic` (retour automatique à l'état serveur en cas d'échec), un seul envoi à la fois, erreur annoncée dans un `role="status"`.
+- Accueil : cœurs pressés selon les favoris de l'utilisateur. Page favoris : liste réelle, carte retirée au clic, état vide (`.favorites__empty`).
+- Pas de bouton favori sur la page logement (absent de la maquette).
+- Token API refusé (401) :
+  - dans une server action : suppression de la session puis connexion ;
+  - dans un composant serveur (qui ne peut pas modifier les cookies) : redirection vers la route `app/session-expiree/route.js`, qui supprime le cookie puis redirige vers `/connexion`.
+- `app/lib/safe-redirect.js` : contrôle des redirections internes, partagé entre connexion et favoris.
+
 ## Reste à faire
 
-- Favoris : appel API (`GET /api/users/{id}/favorites`), bascule réelle du bouton favori.
-- Token API expiré ou invalide (401) : vider la session.
+- Retour d'erreur visuel sur le bouton favori (aujourd'hui : cœur qui revient à son état + message pour lecteurs d'écran).
+- Messagerie (fonctionnement à clarifier).
