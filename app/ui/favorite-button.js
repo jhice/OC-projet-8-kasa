@@ -35,6 +35,7 @@ export default function FavoriteButton({ propertyId, title, isFavorite, classNam
         aria-pressed={optimisticFavorite}
         aria-label={`Favori : ${title}`}
         onClick={handleClick}
+        role="button"
       >
         <span className="icon icon--heart-filled" aria-hidden="true"></span>
       </button>
