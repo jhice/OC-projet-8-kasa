@@ -14,7 +14,7 @@ export default function PropertyCard({ property, titleLevel = 3, isFavorite = fa
             <FavoriteButton className="card__favorite" propertyId={property.id} title={property.title} isFavorite={isFavorite} />
           </div>
           <div className="card__body">
-            <Title className="card__title"><Link className="card__link" href={`/logement/${property.id}`}>{property.title}</Link></Title>
+            <Title className="card__title"><Link className="card__link" href={`/logement/${property.id}/${property.slug}`}>{property.title}</Link></Title>
             <p className="card__location">{property.location}</p>
             <p className="card__price"><span className="card__price-amount">{property.price_per_night}€</span>par nuit</p>
           </div>
