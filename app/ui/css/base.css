@@ -110,3 +110,8 @@ main:focus {
   white-space: nowrap;
   border: 0;
 }
+
+/* masquage total */
+.hidden {
+  display: none;
+}

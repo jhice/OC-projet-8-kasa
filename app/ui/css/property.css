@@ -171,6 +171,10 @@
   /* display: none; */
 }
 
+.gallery__big.hidden {
+  display: none;
+}
+
 .gallery__big-picture {
   width: 100%;
   height: auto;

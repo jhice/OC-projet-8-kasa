@@ -33,6 +33,8 @@ export default function PropertyGallery({ title, pictures }) {
     }
   }
 
+  console.log(bigPictureVisible)
+
   return (
     <div className="gallery">
       <Image
@@ -55,26 +57,29 @@ export default function PropertyGallery({ title, pictures }) {
                 aria-current={index === current ? "true" : undefined}
                 onClick={() => openBigPicture(index)}
               >
-                <Image className="gallery__thumb-image" src={picture} alt="" width={310} height={207} sizes="(min-width: 768px) 25vw, 84px" />
+                <Image role="img" className="gallery__thumb-image" src={picture} alt="" width={310} height={207} sizes="(min-width: 768px) 25vw, 84px" />
               </button>
             </li>
           ))}
         </ul>
       )}
-      <div className={"gallery__big " + (bigPictureVisible ? '' : 'visually-hidden')}>
+      <div className={"gallery__big " + (bigPictureVisible ? '' : 'hidden')}>
         <button
+          role="navigation"
           className="gallery__big-navigation gallery__big-navigation--left"
           onClick={() => previousPicture()}
         >
           &lt;
         </button>
         <button
+          role="navigation"
           className="gallery__big-navigation--close"
           onClick={() => setBigPictureVisible(false)}
         >
           Fermer
         </button>
         <Image
+          role="img"
           className="gallery__big-picture"
           src={pictures[current]}
           alt={`${title} — photo ${current + 1} sur ${pictures.length}`}
@@ -84,6 +89,7 @@ export default function PropertyGallery({ title, pictures }) {
           preload
         />
         <button
+          role="navigation"
           className="gallery__big-navigation gallery__big-navigation--right"
           onClick={() => nextPicture()}
         >
