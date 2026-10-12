@@ -11,7 +11,8 @@
    -------------------------------------------------------------------------- */
 
 .property {
-  max-width: calc(60.625rem + 2 * var(--space-4)); /* 970px + gouttières */
+  max-width: calc(60.625rem + 2 * var(--space-4));
+  /* 970px + gouttières */
   margin-bottom: 2.5rem;
 }
 
@@ -46,11 +47,13 @@
 
 @media (min-width: 1024px) {
   .property__back {
-    padding-top: 6.25rem; /* 100px */
+    padding-top: 6.25rem;
+    /* 100px */
   }
 
   .property__layout {
-    grid-template-columns: minmax(0, 1fr) 21.375rem; /* colonne hôte : 342px */
+    grid-template-columns: minmax(0, 1fr) 21.375rem;
+    /* colonne hôte : 342px */
     align-items: start;
     gap: var(--space-3);
   }
@@ -83,7 +86,8 @@
 }
 
 .gallery__thumb {
-  flex: 0 0 5.25rem; /* 84px */
+  flex: 0 0 5.25rem;
+  /* 84px */
   scroll-snap-align: start;
 }
 
@@ -99,7 +103,8 @@
 
 .gallery__thumb-image {
   width: 100%;
-  height: 6.875rem; /* 110px */
+  height: 6.875rem;
+  /* 110px */
   object-fit: cover;
   border-radius: var(--radius-lg);
   transition: opacity var(--transition-fast);
@@ -126,7 +131,8 @@
 @media (min-width: 768px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
-    gap: 0.625rem; /* 10px */
+    gap: 0.625rem;
+    /* 10px */
     height: auto;
   }
 
@@ -148,6 +154,53 @@
   }
 }
 
+/* carousel */
+
+.gallery__big {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  /* display: none; */
+}
+
+.gallery__big-picture {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border-radius: calc(var(--radius-lg) * 3);
+}
+
+.gallery__big-navigation {
+  position: absolute;
+
+  border: none;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
+.gallery__big-navigation--left {
+  left: 2rem;
+}
+
+.gallery__big-navigation--right {
+  right: 2rem;
+}
+
+.gallery__big-navigation--close {
+  /* display: block; */
+  position: relative;
+  align-self: flex-end;
+  margin: 0 1rem;
+}
 
 /* --------------------------------------------------------------------------
    Bloc d'informations (titre, localisation, description, tags)
@@ -196,7 +249,8 @@
 
 .property-info__tag {
   justify-content: center;
-  min-width: 6.25rem; /* 100px : aligne les tags en colonnes */
+  min-width: 6.25rem;
+  /* 100px : aligne les tags en colonnes */
 }
 
 
@@ -224,7 +278,8 @@
 }
 
 .host-card__avatar {
-  width: 5.0625rem; /* 81px */
+  width: 5.0625rem;
+  /* 81px */
   height: 5.0625rem;
   object-fit: cover;
   border-radius: var(--radius-lg);
