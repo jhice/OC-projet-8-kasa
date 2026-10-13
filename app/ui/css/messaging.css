@@ -180,7 +180,7 @@
 }
 
 .message__meta {
-  font-size: 0.625rem; /* 10px */
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
 

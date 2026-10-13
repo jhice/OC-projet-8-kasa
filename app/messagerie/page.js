@@ -24,7 +24,7 @@ export default async function MessagingPage() {
           <h1 className="inbox__title" id="inbox-title">Messages</h1>
           <ul className="inbox__list" role="list">
             <li>
-              <Link className="conversation conversation--active" href="/messagerie/conversation" aria-current="true">
+              <Link className="conversation conversation--active" href="/messagerie/conversation?id=1" aria-current="true">
                 <Image className="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-12.jpg" alt="" width={44} height={44} />
                 <span className="conversation__name">Nathalie Jean</span>
                 <time className="conversation__time" dateTime="2025-09-03T11:10">11:10</time>
@@ -32,7 +32,7 @@ export default async function MessagingPage() {
               </Link>
             </li>
             <li>
-              <Link className="conversation conversation--unread" href="/messagerie/conversation">
+              <Link className="conversation conversation--unread" href="/messagerie/conversation?id=2">
                 <Image className="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-1.jpg" alt="" width={44} height={44} />
                 <span className="conversation__name">Della Case</span>
                 <time className="conversation__time" dateTime="2025-09-03T09:47">09:47</time>
@@ -41,7 +41,7 @@ export default async function MessagingPage() {
               </Link>
             </li>
             <li>
-              <Link className="conversation" href="/messagerie/conversation">
+              <Link className="conversation" href="/messagerie/conversation?id=3">
                 <Image className="conversation__avatar" src="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/profile-picture-2.jpg" alt="" width={44} height={44} />
                 <span className="conversation__name">Franck Maher</span>
                 <time className="conversation__time" dateTime="2025-09-02T18:21">Hier</time>

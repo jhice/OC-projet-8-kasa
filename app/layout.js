@@ -43,10 +43,10 @@ export default async function RootLayout({ children }) {
               </ul>
             </nav>
 
-            <Link className="header__logo" href="/">
-              <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
-              <Image className="header__logo-full" src={LogoKasa} alt="Kasa — accueil" width="163" height="58" />
-            </Link>
+            <div className="header__logo">
+              <Image className="header__logo-picto" src={LogoKasaIcon} alt="" width="47" height="54" />
+              <Image className="header__logo-full" src={LogoKasa} alt="" width="163" height="58" />
+            </div>
 
             <div className="header__actions">
               <div className="header__icons">
@@ -72,9 +72,7 @@ export default async function RootLayout({ children }) {
 
           <div className="mobile-menu" id="mobile-menu" popover="auto">
             <div className="mobile-menu__head">
-              <NavLink href="/">
-                <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
-              </NavLink>
+              <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
               <button className="mobile-menu__close" type="button" popoverTarget="mobile-menu" popoverTargetAction="hide" aria-label="Fermer le menu">
                 <span className="icon icon--close icon--xl" aria-hidden="true"></span>
               </button>

@@ -199,6 +199,12 @@
   right: 2rem;
 }
 
+.gallery__big-picture-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
 .gallery__big-navigation--close {
   /* display: block; */
   position: relative;
