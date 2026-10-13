@@ -1,7 +1,12 @@
 // Couche réseau, sans React : utilisable depuis un hook comme depuis un
 // gestionnaire d'évènement (Login), un loader de route, un test, etc.
 
-const BASE_URL = "http://localhost:8000";
+let BASE_URL;
+if (process.env.ENV === "dev") {
+  BASE_URL = "http://localhost:8000";
+} else {
+  BASE_URL = "https://oc-kasa-backend.onrender.com";
+}
 
 /**
  * Erreur API : message exploitable pour l'UI + status HTTP (403, 404...)
