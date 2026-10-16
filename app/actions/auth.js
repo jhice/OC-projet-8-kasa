@@ -32,7 +32,8 @@ export async function signin(state, formData) {
   } catch (error) {
     let message = "Une erreur est survenue, veuillez réessayer.";
     if (error.status === 401) message = "Email ou mot de passe incorrect.";
-    if (error.status === undefined) message = "Connexion au serveur impossible, veuillez réessayer plus tard.";
+    // if (error.status === undefined) message = "Connexion au serveur impossible, veuillez réessayer plus tard.";
+    if (error.status === undefined) message = error.message;
     return {
       email,
       errors: { form: [message] },
