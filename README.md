@@ -69,8 +69,14 @@ Deux tests sont réalisés :
 - ESLint (qualité du code)
 - Vitest (tests unitaires)
 
-## Deploy on Vercel
+## Déploiement du frontend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Sur Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Le front-end est déployé à l'adresse : https://oc-projet-8-kasa-olive.vercel.app/
+
+## Déploiement du back-end
+
+> Sur Render
+
+Le back-end est déployé à l'adresse : https://oc-kasa-backend.onrender.com
