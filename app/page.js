@@ -5,7 +5,7 @@ import { apiListProperties } from "./lib/api-bridge";
 import { getFavoriteIds } from "./lib/favorites";
 
 import Image from "next/image";
-import ImageHero from "./ui/assets/images/hero.jpg";
+import ImageHero from "./ui/assets/images/hero.webp";
 
 export default async function Home() {
   

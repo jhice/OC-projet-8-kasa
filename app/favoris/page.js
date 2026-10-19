@@ -30,7 +30,7 @@ export default async function FavoritesPage() {
         {favorites.length > 0 ? (
           <ul className="listings__grid" role="list">
             {favorites.map((property) => (
-              <PropertyCard key={property.id} property={property} titleLevel={2} isFavorite />
+              <PropertyCard key={property.id} property={property} titleLevel={2} isFavorite loadingType="eager" />
             ))}
           </ul>
         ) : (

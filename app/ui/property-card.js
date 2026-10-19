@@ -3,7 +3,7 @@ import Link from "next/link";
 import FavoriteButton from "./favorite-button";
 
 // titleLevel : niveau du titre selon la page (h3 sur l'accueil, h2 dans les favoris)
-export default function PropertyCard({ property, titleLevel = 3, isFavorite = false }) {
+export default function PropertyCard({ property, titleLevel = 3, isFavorite = false, loadingType = "lazy" }) {
   const Title = `h${titleLevel}`;
   return (
     <>
@@ -12,7 +12,7 @@ export default function PropertyCard({ property, titleLevel = 3, isFavorite = fa
         <meta itemProp="image" content={property.cover} />
         <article className="card" itemProp="offers" itemScope itemType="https://schema.org/Offer">
           <div className="card__media">
-            <Image className="card__image" src={property.cover} width={1240} height={827} alt={property.title} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" loading="lazy" />
+            <Image className="card__image" src={property.cover} width={1240} height={827} alt="" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" loading={loadingType} />
             <FavoriteButton className="card__favorite" propertyId={property.id} title={property.title} isFavorite={isFavorite} />
           </div>
           <div className="card__body">

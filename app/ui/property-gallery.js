@@ -44,7 +44,7 @@ export default function PropertyGallery({ title, pictures }) {
         width={1240}
         height={827}
         sizes="(min-width: 768px) 50vw, 100vw"
-        preload
+        preload fetchPriority="high"
       />
       {pictures.length > 1 && (
         <ul className="gallery__thumbs" role="list" aria-label="Photos du logement">

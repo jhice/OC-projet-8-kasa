@@ -17,7 +17,7 @@ export default function AboutPage() {
         <p className="hero__text">Chez Kasa, nous croyons que chaque voyage mérite un lieu unique où se sentir bien.</p>
         <p className="hero__text">Depuis notre création, nous mettons en relation des voyageurs en quête d’authenticité avec des hôtes passionnés qui aiment partager leur région et leurs bonnes adresses.</p>
         <div className="hero__media">
-          <Image className="hero__image" src={ImageHero} alt="" sizes="100vw" preload />
+          <Image className="hero__image" src={ImageHero} alt="" sizes="100vw" preload fetchPriority="high" />
         </div>
       </section>
 
