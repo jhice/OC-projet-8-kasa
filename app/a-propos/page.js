@@ -6,6 +6,7 @@ import ImageMission from "../ui/assets/images/a-propos-mission.webp";
 
 export const metadata = {
   title: "À propos",
+  description: "Chez Kasa, nous croyons que chaque voyage mérite un lieu unique où se sentir bien.",
 };
 
 export default function AboutPage() {

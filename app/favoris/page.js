@@ -8,6 +8,7 @@ import { getFavorites } from "../lib/favorites";
 
 export const metadata = {
   title: "Vos favoris",
+  description: "Retrouvez ici tous les logements que vous avez aimés.",
 };
 
 export default async function FavoritesPage() {

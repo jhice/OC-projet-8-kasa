@@ -11,7 +11,6 @@ import "./ui/css/components.css";
 import "./ui/css/layout.css";
 
 import Image from "next/image";
-import Link from "next/link";
 import NavLink from "./ui/nav-link";
 import LogoutButton from "./ui/logout-button";
 import { getSession } from "./lib/session";
@@ -20,8 +19,8 @@ import LogoKasa from "./ui/assets/logo/logo-kasa.svg";
 
 export const metadata = {
   title: {
-    template: "Kasa — %s",
-    default: "Kasa — Chez vous, partout et ailleurs",
+    template: "%s - Kasa",
+    default: "Chez vous, partout et ailleurs - Kasa",
   },
   description: "Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.",
 };
@@ -72,7 +71,7 @@ export default async function RootLayout({ children }) {
 
           <div className="mobile-menu" id="mobile-menu" popover="auto">
             <div className="mobile-menu__head">
-              <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — accueil" width="47" height="54" />
+              <Image className="header__logo-picto" src={LogoKasaIcon} alt="Kasa — Accueil" width="47" height="54" />
               <button className="mobile-menu__close" type="button" popoverTarget="mobile-menu" popoverTargetAction="hide" aria-label="Fermer le menu">
                 <span className="icon icon--close icon--xl" aria-hidden="true"></span>
               </button>

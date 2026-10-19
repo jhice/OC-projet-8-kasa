@@ -10,7 +10,6 @@ import { apiGetProperty } from "../../lib/api-bridge";
 // Logement introuvable (404 de l'API) → page 404 de Next
 async function getProperty(id) {
   try {
-    console.log(id)
     return await apiGetProperty(id);
   } catch (error) {
     if (error.status === 404) {
@@ -20,6 +19,11 @@ async function getProperty(id) {
   }
 }
 
+/**
+ * Metadata dynamique en fonction du logement affiché
+ * @param {string} slug Le slug de la propriété
+ * @returns 
+ */
 export async function generateMetadata({ params }) {
   // { slug: [ '0979876d', 'appartement-de-standing-10e' ] }
   const { slug } = await params;

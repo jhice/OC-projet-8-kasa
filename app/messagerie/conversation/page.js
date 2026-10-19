@@ -7,6 +7,7 @@ import { requireSession } from "../../lib/session";
 
 export const metadata = {
   title: "Conversation avec Nathalie Jean",
+  description: "Retrouvez ici tous les messages échangés avec Nathalie Jean",
 };
 
 // Page statique (maquette) : les données réelles viendront avec l'API de messagerie.

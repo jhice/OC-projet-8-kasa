@@ -4,6 +4,7 @@ import LoginForm from "../ui/login-form";
 
 export const metadata = {
   title: "Connexion",
+  description: "Connectez-vous pour retrouver vos réservations, vos annonces et tout ce qui rend vos séjours uniques.",
 };
 
 // ?redirect=/favoris : page demandée avant la connexion (posé par proxy.js)

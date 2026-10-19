@@ -7,6 +7,7 @@ import { requireSession } from "../lib/session";
 
 export const metadata = {
   title: "Messagerie",
+  description: "Retrouvez ici tous les messages échangés avec vos hôtes",
 };
 
 // Page statique (maquette) : les données réelles viendront avec l'API de messagerie.
