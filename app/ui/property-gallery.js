@@ -57,13 +57,16 @@ export default function PropertyGallery({ title, pictures }) {
                 aria-current={index === current ? "true" : undefined}
                 onClick={() => openBigPicture(index)}
               >
-                <Image role="img" className="gallery__thumb-image" src={picture} alt="" width={310} height={207} sizes="(min-width: 768px) 25vw, 84px" />
+                <Image className="gallery__thumb-image" src={picture} alt="" width={310} height={207} sizes="(min-width: 768px) 25vw, 84px" />
               </button>
             </li>
           ))}
         </ul>
       )}
-      <div className={"gallery__big " + (bigPictureVisible ? '' : 'hidden')}>
+      <div
+        className={"gallery__big " + (bigPictureVisible ? '' : 'hidden')}
+        data-testid="gallery-slider"
+      >
         <button
           role="navigation"
           className="gallery__big-navigation gallery__big-navigation--left"
@@ -71,6 +74,7 @@ export default function PropertyGallery({ title, pictures }) {
         >
           &lt;
         </button>
+        {/* <div className="gallery__big-picture-container"> */}
         <button
           role="navigation"
           className="gallery__big-navigation--close"
@@ -78,8 +82,9 @@ export default function PropertyGallery({ title, pictures }) {
         >
           Fermer
         </button>
+
         <Image
-          role="img"
+          data-testid="big-picture"
           className="gallery__big-picture"
           src={pictures[current]}
           alt={`${title} — photo ${current + 1} sur ${pictures.length}`}
@@ -88,6 +93,7 @@ export default function PropertyGallery({ title, pictures }) {
           sizes="(min-width: 768px) 50vw, 100vw"
           preload
         />
+        {/* </div> */}
         <button
           role="navigation"
           className="gallery__big-navigation gallery__big-navigation--right"
