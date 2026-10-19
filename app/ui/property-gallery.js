@@ -69,7 +69,8 @@ export default function PropertyGallery({ title, pictures }) {
       >
         <button
           role="navigation"
-          className="gallery__big-navigation gallery__big-navigation--left"
+          data-testid="gallery-nav-left"
+          className={"gallery__big-navigation gallery__big-navigation--left" + (pictures.length > 1 ? "" : "hidden")}
           onClick={() => previousPicture()}
         >
           &lt;
@@ -77,6 +78,7 @@ export default function PropertyGallery({ title, pictures }) {
         {/* <div className="gallery__big-picture-container"> */}
         <button
           role="navigation"
+          data-testid="gallery-nav-close"
           className="gallery__big-navigation--close"
           onClick={() => setBigPictureVisible(false)}
         >
@@ -96,7 +98,8 @@ export default function PropertyGallery({ title, pictures }) {
         {/* </div> */}
         <button
           role="navigation"
-          className="gallery__big-navigation gallery__big-navigation--right"
+          data-testid="gallery-nav-right"
+          className={"gallery__big-navigation gallery__big-navigation--right" + (pictures.length > 1 ? "" : "hidden")}
           onClick={() => nextPicture()}
         >
           &gt;
