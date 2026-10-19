@@ -1,33 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projet Kasa
 
-## Getting Started
+## Pré-requis pour l'installation
 
-First, run the development server:
+- Node.js (version LTS)
+- Un gestiionnaire de paquets Node.js : npm, yarn, pnpm ou bun
+
+## Installation
+
+- Clonez ce dépôt en local
+- Rendez-vous dans le dossier cloné
+- Lancez la commande d'installation :
+
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+# ou
+bun install
+```
+
+## Démarrer le projet
+
+Le back-end est fourni [sur un autre dépôt]() :
+
+- Afin de s'assurer que le serveur démarre sur le port 8000, modifier le script start comme ceci : `"start": "PORT=8000 node ./bin/www"`
+- Démarrer le serveur API avec `npm start`
+
+Ensuite démarrer le serveur de développement du projet :
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur. Vous devriez arriver sur la page de connexion :tada:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Description du projet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Le projet utilise les conventions Next.js et les fonctionnalités suivantes :
 
-## Learn More
+- App Router
+- Server Actions
+- Session serveur
+- JWT en cookie HttpOnly pour l'identification client
 
-To learn more about Next.js, take a look at the following resources:
+Le projet est en cours de réalisation ([Sprint 1 du backlog](https://app.notion.com/p/openclassrooms/Product-Backlog-et-sp-cifications-techniques-pour-le-site-de-Kasa-25d484f1fa6180c7924beb3ae178fa58)).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+L'utilisateur peut naviguer sur le site librement mais doit se connecter pour gérer ses favoris.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deux tests sont réalisés :
+
+- Composant bouton de mise en favori (icône *coeur* sur les vignettes)
+- Composant de la galerie
+
+### Stack logicielle
+
+- Next.js (interface entre le frontend et le backend)
+- React (frontend)
+- Jose (manipulation JWT)
+- Zod (validation des formulaires)
+- ESLint (qualité du code)
+- Vitest (tests unitaires)
 
 ## Deploy on Vercel
 
