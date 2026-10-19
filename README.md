@@ -75,6 +75,8 @@ Deux tests sont réalisés :
 
 Le front-end est déployé à l'adresse : https://oc-projet-8-kasa-olive.vercel.app/
 
+Identifiants de connexion : `test@kasa.fr` / `P@ssword123`
+
 ## Déploiement du back-end
 
 > Sur Render
