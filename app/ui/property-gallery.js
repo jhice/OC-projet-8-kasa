@@ -33,7 +33,7 @@ export default function PropertyGallery({ title, pictures }) {
     }
   }
 
-  console.log(bigPictureVisible)
+  console.log(bigPictureVisible);
 
   return (
     <div className="gallery">
@@ -64,7 +64,7 @@ export default function PropertyGallery({ title, pictures }) {
         </ul>
       )}
       <div
-        className={"gallery__big " + (bigPictureVisible ? '' : 'hidden')}
+        className={"gallery__big " + (bigPictureVisible ? "" : "hidden")}
         data-testid="gallery-slider"
       >
         <button

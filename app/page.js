@@ -8,8 +8,10 @@ import Image from "next/image";
 import ImageHero from "./ui/assets/images/hero.jpg";
 
 export default async function Home() {
+  
   const [properties, favoriteIds] = await Promise.all([apiListProperties(), getFavoriteIds()]);
   const propertiesForHomepage = properties.slice(0, 9);
+
   return (
 
     <>

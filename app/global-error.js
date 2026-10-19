@@ -1,4 +1,4 @@
-'use client' // Error boundaries must be Client Components
+"use client"; // Error boundaries must be Client Components
 
 export default function GlobalError({ error, retry }) {
   return (
@@ -10,5 +10,5 @@ export default function GlobalError({ error, retry }) {
         <button onClick={() => retry()}>Réessayer</button>
       </body>
     </html>
-  )
+  );
 }

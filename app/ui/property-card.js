@@ -21,5 +21,5 @@ export default function PropertyCard({ property, titleLevel = 3, isFavorite = fa
         </article>
       </li>
     </>
-  )
+  );
 }
