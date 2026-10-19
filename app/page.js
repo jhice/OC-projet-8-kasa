@@ -20,7 +20,7 @@ export default async function Home() {
           <h1 className="hero__title">Chez vous, <span className="hero__title-line">partout et ailleurs</span></h1>
           <p className="hero__text">Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.</p>
           <div className="hero__media">
-            <Image className="hero__image" src={ImageHero} alt="" sizes="100vw" preload />
+            <Image className="hero__image" src={ImageHero} alt="" sizes="100vw" preload fetchPriority="high" />
           </div>
         </section>
 
