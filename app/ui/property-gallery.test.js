@@ -12,12 +12,12 @@ const pictures = [
 
 describe("gallery with carousel", () => {
 
-  // affiche la galerie : vignette 1 présente
+  // affiche la galerie : vignette 2 présente
   it("devrait afficher la galerie (vignette 1)", () => {
     // affiche le composant galerie
     render(<PropertyGallery title="Titre de la photo" pictures={pictures} />);
     // la première vignette...
-    const button = screen.getByLabelText("Afficher la photo 1 sur 4");
+    const button = screen.getByLabelText("Afficher la photo 2 sur 4");
     // ...doit être présente
     expect(button).toBeInTheDocument();
   });
@@ -72,7 +72,7 @@ describe("gallery with carousel", () => {
     // affiche le composant galerie
     render(<PropertyGallery title="Titre de la photo" pictures={pictures} />);
     // on clique sur la première vignette
-    const button = screen.getByLabelText("Afficher la photo 1 sur 4");
+    const button = screen.getByAltText("Afficher la photo 1 sur 4");
     const user = userEvent.setup();
     await user.click(button);
     // on navigue à gauche => image 4
@@ -104,7 +104,7 @@ describe("gallery with carousel", () => {
     // affiche le composant galerie
     render(<PropertyGallery title="Titre de la photo" pictures={pictures} />);
     // on clique sur la première vignette
-    const button = screen.getByLabelText("Afficher la photo 1 sur 4");
+    const button = screen.getByLabelText("Afficher la photo 2 sur 4");
     const user = userEvent.setup();
     await user.click(button);
     // la modale du slider...

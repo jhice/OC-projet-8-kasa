@@ -85,7 +85,7 @@ export default function PropertyGallery({ title, pictures }) {
       <Image
         className="gallery__main"
         src={pictures[0]}
-        alt={`${title} — photo ${0 + 1} sur ${pictures.length}`}
+        alt={`Afficher la photo ${0 + 1} sur ${pictures.length}`}
         width={1240}
         height={827}
         sizes="(min-width: 768px) 50vw, 100vw"
@@ -97,11 +97,11 @@ export default function PropertyGallery({ title, pictures }) {
           {pictures.slice(1).map((picture, index) => (
             <li className="gallery__thumb" key={picture}>
               <button
-                className={index === current ? "gallery__thumb-button gallery__thumb-button--active" : "gallery__thumb-button"}
+                className={index + 1 === current ? "gallery__thumb-button gallery__thumb-button--active" : "gallery__thumb-button"}
                 type="button"
-                aria-label={`Afficher la photo ${index + 1} sur ${pictures.length}`}
-                aria-current={index === current ? "true" : undefined}
-                onClick={() => openBigPicture(index)}
+                aria-label={`Afficher la photo ${index + 2} sur ${pictures.length}`}
+                aria-current={index + 1 === current ? "true" : undefined}
+                onClick={() => openBigPicture(index + 1)}
               >
                 <Image className="gallery__thumb-image" src={picture} alt="" width={310} height={207} sizes="(min-width: 768px) 25vw, 84px" />
               </button>
