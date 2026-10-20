@@ -75,6 +75,7 @@
   aspect-ratio: 358 / 422;
   object-fit: cover;
   border-radius: var(--radius-lg);
+  cursor: pointer;
 }
 
 .gallery__thumbs {
@@ -157,7 +158,7 @@
 /* carousel */
 
 .gallery__big {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #2F2E2E;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -168,18 +169,39 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  /* display: none; */
+  opacity: 1;
+  transition: opacity 0.4s, visibility 0.4s;
 }
 
+/* visibility (et non z-index) : le fondu de fermeture reste visible
+   et la modale masquée n'intercepte plus les clics */
 .gallery__big.hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .gallery__big-picture {
   width: 100%;
-  height: auto;
+  height: calc(100vh - 100px);
+  object-fit: cover;
   padding: 1rem;
   border-radius: calc(var(--radius-lg) * 3);
+  /* fade back to 1 */
+  transition: opacity 0.3s ease-out;
+}
+
+/* changement d'image : fondu vers 0 (le retour à 1 utilise la transition ci-dessus) */
+.gallery__big-picture--fading {
+  /* fade out to 0 */
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__big,
+  .gallery__big-picture {
+    transition: none;
+  }
 }
 
 .gallery__big-navigation {
@@ -189,6 +211,7 @@
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
+  z-index: 200;
 }
 
 .gallery__big-navigation--left {
