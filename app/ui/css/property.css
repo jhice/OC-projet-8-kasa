@@ -206,8 +206,9 @@
 
 .gallery__big-navigation {
   position: absolute;
-
-  border: none;
+  border: 1px solid rgb(119, 119, 119);
+  color: black;
+  /* border: none; */
   border-radius: 50%;
   height: 3rem;
   width: 3rem;

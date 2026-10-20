@@ -115,20 +115,21 @@ export default function PropertyGallery({ title, pictures }) {
       >
         <button
           role="navigation"
+          aria-label="Image précédente"
           data-testid="gallery-nav-left"
-          className={"gallery__big-navigation gallery__big-navigation--left" + (pictures.length > 1 ? "" : " hidden")}
+          className={"gallery__big-navigation gallery__big-navigation--left button button--secondary" + (pictures.length > 1 ? "" : " hidden")}
           onClick={() => previousPicture()}
         >
-          &lt;
+          <span className="icon icon--back" aria-hidden="true"></span>
         </button>
-        {/* <div className="gallery__big-picture-container"> */}
+
         <button
           role="navigation"
           data-testid="gallery-nav-close"
-          className="gallery__big-navigation--close"
+          className="gallery__big-navigation--close button button--secondary"
           onClick={() => closeBigPicture()}
         >
-          Fermer
+          <span className="icon icon--close" aria-hidden="true"></span> Fermer
         </button>
 
         <Image
@@ -147,14 +148,15 @@ export default function PropertyGallery({ title, pictures }) {
           onLoad={() => setFading(false)}
           onError={() => setFading(false)}
         />
-        {/* </div> */}
+
         <button
           role="navigation"
+          aria-label="Image suivante"
           data-testid="gallery-nav-right"
-          className={"gallery__big-navigation gallery__big-navigation--right" + (pictures.length > 1 ? "" : " hidden")}
+          className={"gallery__big-navigation gallery__big-navigation--right button button--secondary" + (pictures.length > 1 ? "" : " hidden")}
           onClick={() => nextPicture()}
         >
-          &gt;
+          <span className="icon icon--next" aria-hidden="true"></span>
         </button>
       </div>
     </div>
