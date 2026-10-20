@@ -215,6 +215,10 @@
   z-index: 200;
 }
 
+.gallery__big-navigation.hidden {
+  display: none;
+}
+
 .gallery__big-navigation--left {
   left: 2rem;
 }
