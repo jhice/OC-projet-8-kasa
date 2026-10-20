@@ -3,6 +3,20 @@ import { describe, expect, it } from "vitest";
 import PropertyGallery from "./property-gallery";
 import userEvent from "@testing-library/user-event";
 
+/**
+ * Tests de la galerie
+ * - devrait afficher la galerie (vignette 1)
+ * - devrait afficher la galerie (modale masquée)
+ * - devrait afficher une image du slider
+ * - devrait naviguer à droite et à gauche
+ * - devrait gérer les bornes min et max
+ * - devrait masquer la navigation si une seule image
+ * - devrait fermer la modale
+ */
+
+/**
+ * Images de test
+ */
 const pictures = [
   "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg",
   "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-2.jpg",
@@ -100,7 +114,7 @@ describe("gallery with carousel", () => {
   });
 
   // ferme la modale
-  it("fermer la modale", async () => {
+  it("devrait fermer la modale", async () => {
     // affiche le composant galerie
     render(<PropertyGallery title="Titre de la photo" pictures={pictures} />);
     // on clique sur la première vignette

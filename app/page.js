@@ -7,13 +7,18 @@ import { getFavoriteIds } from "./lib/favorites";
 import Image from "next/image";
 import ImageHero from "./ui/assets/images/hero.webp";
 
+/**
+ * Page d'accueil (route "/") (composant serveur)
+ * @returns Promise<JSX.Element>
+*/
 export default async function Home() {
-  
+
+  // Récupération de deux requêtes API
   const [properties, favoriteIds] = await Promise.all([apiListProperties(), getFavoriteIds()]);
+  // On tronque les résultats pour la page d'accueil
   const propertiesForHomepage = properties.slice(0, 9);
 
   return (
-
     <>
       <main id="contenu" tabIndex="-1" className="page__main container">
         <section className="hero">

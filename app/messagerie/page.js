@@ -10,9 +10,15 @@ export const metadata = {
   description: "Retrouvez ici tous les messages échangés avec vos hôtes",
 };
 
-// Page statique (maquette) : les données réelles viendront avec l'API de messagerie.
-// Mobile : liste seule. Dès 768px : liste + conversation.
+/**
+ * Page "favoris" (composant serveur)
+ * Page statique (maquette) : les données réelles viendront avec l'API de messagerie.
+ * Mobile : liste seule. Dès 768px : liste + conversation.
+ * @returns Promise<JSX.Element>
+*/
 export default async function MessagingPage() {
+
+  // on doit être connecté pour accéder à cette page
   await requireSession("/messagerie");
 
   return (

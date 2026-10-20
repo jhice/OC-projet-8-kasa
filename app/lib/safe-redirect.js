@@ -1,5 +1,6 @@
-// N'accepte qu'un chemin interne ("/favoris"), jamais une URL externe :
-// "//site.com" et "/\site.com" (lu "//site.com" par les navigateurs) sont refusés
+// N'accepte qu'un chemin interne ("/favoris"), jamais une URL externe
+// par ex. /connexion?redirect=https://google.fr
 export function safeRedirectPath(path) {
-  return typeof path === "string" && /^\/(?![/\\])/.test(path) ? path : "/";
+  // si préfixe http, on redirige vers la home page
+  return typeof path === "string" && !/^http/.test(path) ? path : "/";
 }

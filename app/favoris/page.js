@@ -1,7 +1,6 @@
 import "../ui/css/favorites.css";
 
 import Link from "next/link";
-
 import PropertyCard from "../ui/property-card";
 import { requireSession } from "../lib/session";
 import { getFavorites } from "../lib/favorites";
@@ -11,9 +10,16 @@ export const metadata = {
   description: "Retrouvez ici tous les logements que vous avez aimés.",
 };
 
+/**
+ * Page "favoris" (composant serveur)
+ * @returns Promise<JSX.Element>
+*/
 export default async function FavoritesPage() {
+  
+  // on doit être connecté pour accéder à cette page
   await requireSession("/favoris");
 
+  // liste des favoris
   const favorites = await getFavorites();
 
   return (

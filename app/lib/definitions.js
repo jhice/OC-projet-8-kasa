@@ -1,7 +1,8 @@
 import * as z from "zod";
 
-// Connexion : on vérifie seulement la présence des champs et le format de l'email,
-// les règles de mot de passe concernent l'inscription.
+/**
+ * Schéma de validation du formulaire de connexion
+ */
 export const SigninFormSchema = z.object({
   email: z
     .string({ error: "L'email est requis." })

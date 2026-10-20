@@ -1,8 +1,11 @@
 "use client"; // Error boundaries must be Client Components
 
+/**
+ * Erreur générique non interceptée (composant client)
+ * @returns JSX.Element
+*/
 export default function GlobalError({ error, retry }) {
   return (
-    // global-error must include html and body tags
     <html>
       <body>
         <h2>Une erreur est survenue.</h2>

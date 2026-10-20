@@ -5,8 +5,14 @@
 
 import { logout } from "../actions/auth";
 
+/**
+ * Composant de déconnexion utilisateur
+ * @param {string} className 
+ * @returns JSX.Element
+ */
 export default function LogoutButton({ className }) {
   function handleClick(event) {
+    // Le clic referme aussi le menu mobile
     event.currentTarget.closest("[popover]")?.hidePopover();
   }
 

@@ -71,7 +71,13 @@ export async function request(pathOrUrl, { method = "GET", body, token } = {}) {
   return { error: false, data: await response.json() };
 }
 
-// Gère les erreurs API
+/**
+ * Gestionnaire d'appel API générique
+ * Gère les erreurs API
+ * @param {string} url Le endpoint API à appeler
+ * @param {Object} options Les options à transmettre avec la requête
+ * @returns 
+ */
 async function apiHandleRequest(url, options) {
   const response = await request(url, options);
   if (response.error) {
@@ -79,7 +85,8 @@ async function apiHandleRequest(url, options) {
   }
   return response.data;
 }
-// Fonctions dédiées par endpoint : le reste de l'app ne manipule plus d'URL.
+
+// Fonctions dédiées par endpoint : le reste de l'applie ne manipule plus d'URL.
 
 // export function apiUserUpdate(userData, token) {
 //   return request("/auth/profile", { method: "PUT", body: userData, token });
@@ -89,7 +96,7 @@ async function apiHandleRequest(url, options) {
  * Auth
  */
 
-// Retourne { token, user } — 401 si identifiants incorrects
+// Retourne { token, user }, 401 si identifiants incorrects
 export function apiLogin(email, password) {
   return apiHandleRequest("/auth/login", { method: "POST", body: { email, password } });
 }
@@ -103,11 +110,12 @@ export function apiListFavorites(userId, token) {
   return apiHandleRequest(`/api/users/${encodeURIComponent(userId)}/favorites`, { token });
 }
 
-// Ajout / retrait idempotents : { ok: true } même si déjà en favori / déjà retiré
+// Ajout favori
 export function apiAddFavorite(propertyId, token) {
   return apiHandleRequest(`/api/properties/${encodeURIComponent(propertyId)}/favorite`, { method: "POST", token });
 }
 
+// Retrait favori
 export function apiRemoveFavorite(propertyId, token) {
   return apiHandleRequest(`/api/properties/${encodeURIComponent(propertyId)}/favorite`, { method: "DELETE", token });
 }
@@ -116,10 +124,12 @@ export function apiRemoveFavorite(propertyId, token) {
  * Properties
  */
 
+// Toutes les propriétés
 export function apiListProperties() {
   return apiHandleRequest("/api/properties");
 }
 
+// Une propriété par son identifiant
 export function apiGetProperty(id) {
   return apiHandleRequest(`/api/properties/${encodeURIComponent(id)}`);
 }

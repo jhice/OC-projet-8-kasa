@@ -1,12 +1,17 @@
 "use client";
 
 // Galerie du logement : photo principale + vignettes.
-// Les vignettes restent dans l'ordre (y compris la photo affichée) :
-// un clic change la photo principale sans réorganiser la liste.
+// un clic sur une image affiche un slider depuis l'image cliquée.
 
 import { useRef, useState } from "react";
 import Image from "next/image";
 
+/**
+ * Galerie de photos d'une propriété
+ * @param {string} title Titre du logement pour balise alt sur grande image
+ * @param {array} pictures Liste des photos du logement
+ * @returns 
+ */
 export default function PropertyGallery({ title, pictures }) {
 
   // index de l'image courante
@@ -35,6 +40,9 @@ export default function PropertyGallery({ title, pictures }) {
     setBigPictureVisible(false);
   }
 
+  /**
+   * Image précédente
+   */
   function previousPicture() {
     if (current === 0) {
       changePicture(pictures.length - 1);
@@ -43,6 +51,9 @@ export default function PropertyGallery({ title, pictures }) {
     }
   }
 
+  /**
+   * Image suivante
+   */
   function nextPicture() {
     if (current === pictures.length - 1) {
       changePicture(0);
@@ -82,6 +93,8 @@ export default function PropertyGallery({ title, pictures }) {
 
   return (
     <div className="gallery">
+
+      {/* la première vignette */}
       <Image
         className="gallery__main"
         src={pictures[0]}
@@ -92,6 +105,8 @@ export default function PropertyGallery({ title, pictures }) {
         preload fetchPriority="high"
         onClick={() => openBigPicture(0)}
       />
+
+      {/* la liste de vignettes, moins la première */}
       {pictures.length > 1 && (
         <ul className="gallery__thumbs" role="list" aria-label="Photos du logement">
           {pictures.slice(1).map((picture, index) => (
@@ -109,10 +124,13 @@ export default function PropertyGallery({ title, pictures }) {
           ))}
         </ul>
       )}
+
+      {/* modale */}
       <div
         className={"gallery__big " + (bigPictureVisible ? "" : "hidden")}
         data-testid="gallery-slider"
       >
+        {/* navigation image précédente */}
         <button
           role="navigation"
           aria-label="Image précédente"
@@ -123,6 +141,7 @@ export default function PropertyGallery({ title, pictures }) {
           <span className="icon icon--back" aria-hidden="true"></span>
         </button>
 
+        {/* navigation fermer la modale */}
         <button
           role="navigation"
           data-testid="gallery-nav-close"
@@ -132,6 +151,7 @@ export default function PropertyGallery({ title, pictures }) {
           <span className="icon icon--close" aria-hidden="true"></span> Fermer
         </button>
 
+        {/* la grande image dans la modale */}
         <Image
           ref={bigPictureRef}
           data-testid="big-picture"
@@ -149,6 +169,7 @@ export default function PropertyGallery({ title, pictures }) {
           onError={() => setFading(false)}
         />
 
+        {/* navigation image suivante */}
         <button
           role="navigation"
           aria-label="Image suivante"
@@ -158,6 +179,7 @@ export default function PropertyGallery({ title, pictures }) {
         >
           <span className="icon icon--next" aria-hidden="true"></span>
         </button>
+
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+// Import police de caractères
 import { Inter } from "next/font/google";
 
 const interSans = Inter({
@@ -5,6 +6,7 @@ const interSans = Inter({
   subsets: ["latin"],
 });
 
+// CSS globales
 import "./ui/css/variables.css";
 import "./ui/css/base.css";
 import "./ui/css/components.css";
@@ -17,6 +19,7 @@ import { getSession } from "./lib/session";
 import LogoKasaIcon from "./ui/assets/logo/logo-kasa-picto.svg";
 import LogoKasa from "./ui/assets/logo/logo-kasa.svg";
 
+// Balises meta/SEO
 export const metadata = {
   title: {
     template: "%s - Kasa",
@@ -25,8 +28,13 @@ export const metadata = {
   description: "Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.",
 };
 
+/**
+ * Disposition globale du document HTML (composant serveur)
+ * html > body > header, main, footer
+ * @returns Promise<JSX.Element>
+*/
 export default async function RootLayout({ children }) {
-  // Lecture du cookie de session : toutes les pages sont rendues à la requête
+  // Récupération pour conditionner la navigation (connexion/déconnexion)
   const session = await getSession();
 
   return (

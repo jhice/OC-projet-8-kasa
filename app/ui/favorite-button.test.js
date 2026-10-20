@@ -3,6 +3,13 @@ import { describe, expect, it, vi } from "vitest";
 import FavoriteButton from "./favorite-button";
 import userEvent from "@testing-library/user-event";
 
+/**
+ * Tests du bouton des favoris
+ * - devrait afficher le bouton
+ * - devrait afficher le bouton avec ses propriétés par défaut
+ * - devrait inverser l'état du aria-pressed du bouton
+ */
+
 // promesse vide pour simuler l'attente de l'API favorites (et tester optimistic)
 vi.mock("../actions/favorites", () => ({ toggleFavorite: () => new Promise(() => {}) }));
 // interception navigation (sans router Next)

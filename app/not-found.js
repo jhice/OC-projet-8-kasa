@@ -8,6 +8,10 @@ export const metadata = {
   title: "Page introuvable",
 };
 
+/**
+ * Page "404" (composant serveur)
+ * @returns JSX.Element
+*/
 export default function NotFound() {
   return (
     <main id="contenu" tabIndex="-1" className="page__main page__main--centered container">

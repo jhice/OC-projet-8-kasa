@@ -8,8 +8,13 @@ import { redirect } from "next/navigation";
 
 const SESSION_COOKIE = "session";
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 jours, comme le token de l'API
+// secret pour l'encodage de la clé
 const encodedKey = new TextEncoder().encode(process.env.SESSION_SECRET);
 
+/**
+ * Chiffrement signé d'une donnée reçue
+ * @param {string} payload 
+ */
 export async function encrypt(payload) {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
@@ -18,6 +23,11 @@ export async function encrypt(payload) {
     .sign(encodedKey);
 }
 
+/**
+ * Déchiffrement et validation d'un token donné
+ * @param {string} session 
+ * @returns JWTPayload|null Le token validé ou null
+ */
 export async function decrypt(session) {
   if (!session) return null;
   try {
@@ -29,6 +39,13 @@ export async function decrypt(session) {
   }
 }
 
+/**
+ * Création d'une session à partir des infos données
+ * @param {string} userId 
+ * @param {string} userName 
+ * @param {string} userEmail 
+ * @param {string} apiToken token reçu de l'API backend
+ */
 export async function createSession(user, apiToken) {
   const expiresAt = new Date(Date.now() + SESSION_DURATION);
   const session = await encrypt({
@@ -48,16 +65,24 @@ export async function createSession(user, apiToken) {
   });
 }
 
+/**
+ * Récupère la session utilisateur
+ */
 export async function getSession() {
   const cookie = (await cookies()).get(SESSION_COOKIE)?.value;
   return decrypt(cookie);
 }
 
-// Page réservée aux utilisateurs connectés : proxy.js redirige déjà,
-// mais on revérifie au plus près des données (recommandation Next.js)
+/**
+ * Vérification d'une session présente pour un chemin donné
+ * @param {string} currentPath Le chemin demandé
+ * @returns La session, ou une redirection si non trouvée
+ */
 export async function requireSession(currentPath) {
   const session = await getSession();
-  if (!session) redirect(`/connexion?redirect=${encodeURIComponent(currentPath)}`);
+  if (!session) {
+    redirect(`/connexion?redirect=${encodeURIComponent(currentPath)}`);
+  };
   return session;
 }
 

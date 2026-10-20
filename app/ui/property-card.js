@@ -2,9 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "./favorite-button";
 
-// titleLevel : niveau du titre selon la page (h3 sur l'accueil, h2 dans les favoris)
+/**
+ * Carte d'une propriété (home, favoris)
+ * @param {object} property : objet qui contient les données de la propriété à afficher
+ * @param {number} titleLevel : niveau du titre selon la page (h3 sur l'accueil, h2 dans les favoris)
+ * @param {boolean} isFavorite : pour affichage icone de favoris (coeur vide ou plein)
+ * @param {string} loadingType : lazy loading sur la home, pas sur les favoris
+ * @returns JSX.Element
+ */
 export default function PropertyCard({ property, titleLevel = 3, isFavorite = false, loadingType = "lazy" }) {
+  
+  // élément de titre dynamique
   const Title = `h${titleLevel}`;
+
   return (
     <>
       <li itemScope itemType="https://schema.org/Product">

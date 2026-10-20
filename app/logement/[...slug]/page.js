@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import PropertyGallery from "../../ui/property-gallery";
 import { apiGetProperty } from "../../lib/api-bridge";
 
-// Logement introuvable (404 de l'API) → page 404 de Next
+// Logement introuvable (404 de l'API) => page 404 de Next
 async function getProperty(id) {
   try {
     return await apiGetProperty(id);
@@ -36,10 +36,16 @@ export async function generateMetadata({ params }) {
   };
 }
 
+/**
+ * Page "propriété" (composant serveur)
+ * @param {string} params.slug Slug de la propriété
+ * @returns Promise<JSX.Element>
+*/
 export default async function PropertyPage({ params }) {
   // { slug: [ '0979876d', 'appartement-de-standing-10e' ] }
   const { slug } = await params;
   const id = slug[0];
+  // on va chercher la propriété demandée
   const property = await getProperty(id);
 
   return (

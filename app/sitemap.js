@@ -6,6 +6,9 @@
 
 import { apiListProperties } from "./lib/api-bridge";
 
+/**
+ * URL racine de l'API : config local/prod
+ */
 let BASE_URL;
 if (process.env.ENV === "dev") {
   BASE_URL = "http://localhost:3000";
@@ -13,9 +16,13 @@ if (process.env.ENV === "dev") {
   BASE_URL = "https://oc-projet-8-kasa-olive.vercel.app";
 }
 
+/**
+ * Génère un sitemap des pages publiques du site
+ * @returns un sitemap au format JSON
+ */
 export default async function sitemap() {
 
-  // les pages /favoris /messagerie et /logout n'ont pas à figurer dans le sitemap
+  // les pages /favoris /messagerie et /logout n'ont pas à figurer dans le sitemap (et /connexion à voir)
   const sitemap = [
     {
       url: `${BASE_URL}`,
@@ -29,13 +36,14 @@ export default async function sitemap() {
       changeFrequency: "yearly",
       priority: 0.8,
     },
-    // liste des logements
+    // liste des logements à suivre
   ];
 
   // lien vers toutes les propriétés
   const propertyList = await apiListProperties();
 
   for (const property of propertyList) {
+    // on ajoute chaque page de logement au sitemap (avec id et slug)
     sitemap.push(
       {
         url: `${BASE_URL}/logement/${property.id}/${property.slug}`,

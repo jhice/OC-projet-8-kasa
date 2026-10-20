@@ -7,9 +7,15 @@ export const metadata = {
   description: "Connectez-vous pour retrouver vos réservations, vos annonces et tout ce qui rend vos séjours uniques.",
 };
 
-// ?redirect=/favoris : page demandée avant la connexion (posé par proxy.js)
+/**
+ * Page "connexion" (composant serveur)
+ * @param {Object} searchParams.redirect Page demandée avant la connexion
+ * @returns Promise<JSX.Element>
+*/
 export default async function LoginPage({ searchParams }) {
+  // ?redirect=/favoris : page demandée avant la connexion (posé par proxy.js)
   const { redirect } = await searchParams;
+  // si aucun redirect présent, direction home page (redirectTo transmis au LoginForm plus bas)
   const redirectTo = typeof redirect === "string" ? redirect : "/";
 
   return (

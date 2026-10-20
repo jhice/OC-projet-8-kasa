@@ -9,6 +9,10 @@ export const metadata = {
   description: "Chez Kasa, nous croyons que chaque voyage mérite un lieu unique où se sentir bien.",
 };
 
+/**
+ * Page "à propos" (composant serveur)
+ * @returns JSX.Element
+ */
 export default function AboutPage() {
   return (
     <main id="contenu" tabIndex="-1" className="page__main container">

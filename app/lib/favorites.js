@@ -1,13 +1,10 @@
 import "server-only";
-import { cache } from "react";
 import { redirect } from "next/navigation";
-
 import { getSession } from "./session";
 import { apiListFavorites } from "./api-bridge";
 
 // Favoris de l'utilisateur connecté ([] si déconnecté).
-// cache() : un seul appel API par requête, même si plusieurs composants le demandent.
-export const getFavorites = cache(async () => {
+export const getFavorites = async () => {
   const session = await getSession();
   if (!session) return [];
 
@@ -19,7 +16,7 @@ export const getFavorites = cache(async () => {
     if (error.status === 401) redirect("/session-expiree");
     throw error;
   }
-});
+};
 
 export async function getFavoriteIds() {
   const favorites = await getFavorites();
