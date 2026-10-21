@@ -51,8 +51,8 @@ export default async function RootLayout({ children }) {
             </nav>
 
             <div className="header__logo">
-              <Image className="header__logo-picto" src={LogoKasaIcon} alt="" width="47" height="54" />
-              <Image className="header__logo-full" src={LogoKasa} alt="" width="163" height="58" />
+              <Image className="header__logo-picto" src={LogoKasaIcon} alt="" width="47" height="54" loading="eager" />
+              <Image className="header__logo-full" src={LogoKasa} alt="" width="163" height="58" loading="eager" />
             </div>
 
             <div className="header__actions">
@@ -101,7 +101,7 @@ export default async function RootLayout({ children }) {
         {children}
 
         <footer className="footer">
-          <Image className="footer__logo" src={LogoKasaIcon} alt="" width="47" height="54" />
+          <Image className="footer__logo" src={LogoKasaIcon} alt="" width="47" height="54" loading="eager" />
           <p className="footer__copyright">© 2026 Kasa. All rights reserved.</p>
         </footer>
       </body>
