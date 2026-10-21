@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { signin } from "../actions/auth";
+import { signIn } from "../actions/auth";
 
 /**
  * Connexion utilisateur (composant client)
@@ -11,7 +11,7 @@ import { signin } from "../actions/auth";
 export default function LoginForm({ redirectTo }) {
 
   // server action pour la connexion
-  const [state, action, pending] = useActionState(signin, null);
+  const [state, action, pending] = useActionState(signIn, null);
 
   // références aux champs de formulaire
   const emailRef = useRef(null);

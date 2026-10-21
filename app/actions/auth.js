@@ -12,7 +12,7 @@ import { safeRedirectPath } from "../lib/safe-redirect";
  * @param {object} state State du formulaire
  * @param {object} formData Les données soumises reçues du formulaire
  */
-export async function signin(state, formData) {
+export async function signIn(state, formData) {
 
   // Validation des champs email et mot de passe reçus
   const validatedFields = SigninFormSchema.safeParse({

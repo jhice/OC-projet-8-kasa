@@ -21,14 +21,20 @@ pnpm install
 bun install
 ```
 
+### Variables d'environnement
+
+- Créer un fichier `.env.local` depuis le fichier `.env.example`.
+- Renseigner un secret pour la session.
+- Renseigner `dev` ou `prod` selon l'API que vous souhaitez utiliser.
+
 ## Démarrer le projet
 
-Le back-end est fourni [sur un autre dépôt]() :
+Le backend est fourni [sur un autre dépôt](https://github.com/OpenClassrooms-Student-Center/dev-react-P12) :
 
 - Afin de s'assurer que le serveur démarre sur le port 8000, modifier le script start comme ceci : `"start": "PORT=8000 node ./bin/www"`
 - Démarrer le serveur API avec `npm start`
 
-Ensuite démarrer le serveur de développement du projet :
+Ensuite démarrer le serveur de développement du projet frontend :
 
 ```bash
 npm run dev
@@ -44,7 +50,7 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur. Vou
 
 ## Description du projet
 
-Le projet utilise les conventions Next.js et les fonctionnalités suivantes :
+Le projet utilise les conventions *Next.js* et les fonctionnalités suivantes :
 
 - App Router
 - Server Actions
@@ -73,12 +79,27 @@ Deux tests sont réalisés :
 
 > Sur Vercel
 
-Le front-end est déployé à l'adresse : https://oc-projet-8-kasa-olive.vercel.app/
+Le frontend est déployé à l'adresse : https://oc-projet-8-kasa-olive.vercel.app/
 
 Identifiants de connexion : `test@kasa.fr` / `P@ssword123`
 
-## Déploiement du back-end
+Pour créer un identifiant de connexion, utiliser la commande *cUrl* fournie sur le dépôt du backend. Sinon, utiliser la requête existante dans le dossier `docs/api.http` qui s'exécute avec l'extension [REST Client pour VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+
+```json
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@kasa.fr",
+  "name": "Utilisateur de test",
+  "password": "P@ssword123"
+}
+```
+
+## Déploiement du backend
 
 > Sur Render
 
-Le back-end est déployé à l'adresse : https://oc-kasa-backend.onrender.com
+Le backend avec l'utilisateur de test a été déployé à l'adresse suivante : https://oc-kasa-backend.onrender.com
+
+Utiliser ce même service ou celui de votre choix pour déployer l'API.
