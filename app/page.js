@@ -16,7 +16,7 @@ export default async function Home() {
   // Récupération de deux requêtes API
   const [properties, favoriteIds] = await Promise.all([apiListProperties(), getFavoriteIds()]);
   // On tronque les résultats pour la page d'accueil
-  const propertiesForHomepage = properties.slice(0, 9);
+  const propertiesForHomepage = properties; //.slice(0, 9);
 
   return (
     <>
